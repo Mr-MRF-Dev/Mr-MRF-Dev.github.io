@@ -4,15 +4,89 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr MRF</title>
+    <title>Mr MRF Official Website</title>
     <meta name="description" content="Mr MRF, Official Website">
     <meta name="keywords" content="MRF, MR MRF, Mr MRF, mrf, mr mrf">
     <meta name="author" content="Mr MRF">
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/> 
+    <link rel="icon" type="image/x-icon" href="Web-icon.ico">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+    <style>
+      body,h1 {font-family: "Raleway", sans-serif}
+
+      body, html {height: 100%}
+
+      .bgimg {
+        background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg');
+        min-height: 100%;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .jumbo{font-size:64px!important}
+
+      .link{text-decoration:none;}
+
+      video{opacity:1; border-radius: 25px;}
+
+      .Card{
+        width: 80%;
+        padding: 20px;
+        border-radius:25px 0 0 25px;
+        background-color: rgba(17,24,39,0.9);
+      }
+
+      .center{
+        width: 70%;
+        top:50%;
+        left:50%;
+        position:absolute;
+        transform:translate(-50%,-50%);
+        -ms-transform:translate(-50%,-50%);
+      }
+
+      .child {float: left;}
+
+      .flex-container {display: flex; align-items: center;}
+    </style>
   </head>
   
+
   <body>
-    <h1>Hello World!</h1>
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+      <div class="w3-display-topleft w3-padding-large w3-xlarge">
+        Mr MRF
+      </div>
+
+      <div class="center">
+
+        <div class="flex-container">
+
+          <div class="Card child">
+            <h1 class="jumbo w3-animate-top w3-center">COMING SOON</h1>
+            <hr class="w3-border-grey" style="margin:auto;width:40%">
+            <a class="link" href="https://mr-mrf-dev.github.io/Profile-Card/" target="_blank">
+              <p class="w3-large w3-center">My Profile Card</p>
+            </a>
+          </div>
+
+          <div class="child">
+            <video width="320" height="320" autoplay>
+              <source type="video/mp4" src="MWII.mp4">
+              <source type="video/ogg" src="MWII.ogg">
+            </video>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="w3-display-bottomleft w3-padding-large">
+        Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a> With a little Change
+      </div>
+
+    </div>
+
   </body>
-  
 </html>
