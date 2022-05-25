@@ -6,7 +6,8 @@
 <a href="https://github.com/Mr-MRF-Dev/Mr-MRF-Dev.github.io/actions/workflows/pages/pages-build-deployment">
     <img src="https://github.com/Mr-MRF-Dev/Mr-MRF-Dev.github.io/actions/workflows/pages/pages-build-deployment/badge.svg">
 </a>
-<a href="#"><img src="https://img.shields.io/badge/Version-1.0-brightgreen"></a>
+<a href=""><img src="https://img.shields.io/badge/Version-1.0-brightgreen"></a>
+<a href="https://github.com/Mr-MRF-Dev/Mr-MRF-Dev.github.io/blob/master/LICENSE"><img src="https://img.shields.io/github/license/Mr-MRF-Dev/Mr-MRF-Dev.github.io?color=brightgreen"></a>
 
     
 ## Mr MRF Web Site
