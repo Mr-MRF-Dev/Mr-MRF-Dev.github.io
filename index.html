@@ -36,7 +36,9 @@
 
       .link{text-decoration:none;}
 
-      video{border-radius: 25px;}
+      video[autoplay]:not([muted]) {
+        border-radius: 25px;
+      }
 
       .Card{
         width: 80%;
@@ -57,6 +59,7 @@
       .child {float: left;}
 
       .flex-container {display: flex; align-items: center;}
+
     </style>
   </head>
   
@@ -80,7 +83,7 @@
           </div>
 
           <div class="child">
-            <video width="320" height="320" Poster="/asset/Web-image.jpg" controls autoplay>
+            <video width="320" height="320" Poster="/asset/Web-image.jpg" autoplay>
               <source type="video/mp4" src="/asset/MWII-2.mp4">
               <source type="video/ogg" src="/asset/MWII.ogg">
             </video>
