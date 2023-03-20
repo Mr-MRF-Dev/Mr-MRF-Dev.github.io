@@ -1,3 +1,53 @@
-body {
-    background-color: aquamarine;
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: 0px;
+}
+
+header {
+  text-align: center;
+  padding: 30px 0 10px 0;
+}
+
+h1 {
+  font-size: xx-large;
+}
+
+main {
+  padding: 20px 50px 20px 50px;
+}
+
+footer {
+  text-align: center;
+  color: white;
+  padding: 30px 0 30px 0;
+  background-color: black;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: gray;
+}
+
+main section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+    color: black;
+    display: inline;
+}
+
+.logo {
+    margin: 20px;
+  width: 100px;
+  border-radius: 50px;
+  float: left;
 }
