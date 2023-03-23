@@ -6,7 +6,9 @@
 
 header {
   text-align: center;
-  padding: 30px 0 10px 0;
+  padding: 20px 0 0 0;
+  display: flex;
+  justify-content: center;
 }
 
 h1 {
@@ -34,19 +36,44 @@ a:hover {
   color: gray;
 }
 
-main section {
+main section,
+header section {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+header section {
+  font-weight: bold;
+  flex-direction: row;
+  padding: 10px 10px;
+  margin: 10px;
+  transition: 1s;
+}
+
+header section:first-of-type {
+  flex-direction: column;
+}
+
+header section:hover {
+  border-radius: 25px;
+  background-color: rgba(100, 100, 100, 0.2);
+}
+
+header section a {
+  color: black;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .link {
-    color: black;
-    display: inline;
+  color: black;
+  display: inline;
 }
 
 .logo {
-    margin: 20px;
+  margin: 20px;
   width: 100px;
   border-radius: 50px;
   float: left;
