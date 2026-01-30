@@ -208,14 +208,6 @@ contactForm.addEventListener("submit", (e) => {
   contactForm.reset();
 });
 
-// ===== Parallax Effect for Hero Section =====
-window.addEventListener("scroll", () => {
-  const scrolled = window.pageYOffset;
-  const hero = document.querySelector(".hero");
-  if (hero) {
-    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-  }
-});
 
 // ===== Active Navigation Link Highlighting =====
 const sections = document.querySelectorAll(".section, .hero");
