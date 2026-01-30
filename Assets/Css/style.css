@@ -925,7 +925,6 @@ body {
 
 .social-links {
   display: flex;
-  justify-content: center;
   gap: 1.5rem;
 }
 
@@ -949,6 +948,41 @@ body {
 .social-link:hover {
   transform: translateY(-5px) scale(1.1);
   box-shadow: var(--shadow-lg);
+}
+
+/* About Section Social Links with Text */
+.about-social {
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.social-link-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+}
+
+.social-link-text svg {
+  flex-shrink: 0;
+}
+
+.social-link-text:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.1);
 }
 
 /* ===== Footer ===== */
