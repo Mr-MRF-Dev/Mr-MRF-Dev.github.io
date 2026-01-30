@@ -139,7 +139,7 @@ function createProjectCard(repo) {
         ${
           repo.topics && repo.topics.length > 0
             ? repo.topics
-                .slice(0, 4)
+                .slice(0, 2)
                 .map((topic) => `<span class="tag">${topic}</span>`)
                 .join("")
             : ""
