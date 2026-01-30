@@ -1,3 +1,121 @@
+// ===== GitHub API Configuration =====
+const GITHUB_USERNAME = "Mr-MRF-Dev";
+const GITHUB_API_BASE = "https://api.github.com";
+
+// ===== Fetch GitHub User Data =====
+async function fetchGitHubData() {
+  // Add loading state
+  const statNumbers = document.querySelectorAll(".stat-number");
+  statNumbers.forEach((stat) => stat.classList.add("loading"));
+
+  try {
+    // Fetch user profile
+    const userResponse = await fetch(
+      `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}`,
+    );
+    if (!userResponse.ok) throw new Error("Failed to fetch user data");
+    const userData = await userResponse.json();
+
+    // Fetch repositories
+    const reposResponse = await fetch(
+      `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`,
+    );
+    if (!reposResponse.ok) throw new Error("Failed to fetch repos");
+    const reposData = await reposResponse.json();
+
+    // Calculate total contributions (sum of all repo stars + forks + repos)
+    const totalStars = reposData.reduce(
+      (sum, repo) => sum + repo.stargazers_count,
+      0,
+    );
+    const totalForks = reposData.reduce(
+      (sum, repo) => sum + repo.forks_count,
+      0,
+    );
+    const estimatedContributions =
+      totalStars * 10 + totalForks * 5 + userData.public_repos * 50;
+
+    // Update stats with real data
+    updateStats({
+      projects: userData.public_repos,
+      contributions: estimatedContributions,
+      followers: userData.followers,
+    });
+
+    // Remove loading state
+    statNumbers.forEach((stat) => stat.classList.remove("loading"));
+
+    console.log("✅ GitHub data fetched successfully!");
+    console.log(
+      `📊 Repos: ${userData.public_repos} | ⭐ Stars: ${totalStars} | 👥 Followers: ${userData.followers}`,
+    );
+  } catch (error) {
+    console.error("❌ Error fetching GitHub data:", error);
+    // Remove loading state even on error
+    statNumbers.forEach((stat) => stat.classList.remove("loading"));
+    // Keep default HTML values if fetch fails
+  }
+}
+
+// ===== Update Projects Section (Optional) =====
+function updateProjects(repos) {
+  // Filter for featured projects (you can customize this)
+  const featuredProjects = [
+    "Angry-Task",
+    "LC3-Simulator",
+    "Airline-Data-Warehouse",
+    "NetLab-Archive",
+    "Mr-Minesweeper",
+    "Simple-Profile-Card",
+  ];
+
+  const featuredRepos = repos
+    .filter((repo) => featuredProjects.includes(repo.name))
+    .slice(0, 6);
+
+  const projectsGrid = document.querySelector(".projects-grid");
+  if (!projectsGrid || featuredRepos.length === 0) return;
+
+  // Optionally clear and rebuild projects
+  // projectsGrid.innerHTML = '';
+
+  featuredRepos.forEach((repo) => {
+    const languageEmojis = {
+      TypeScript: "💢",
+      JavaScript: "📜",
+      "C++": "🖥️",
+      C: "🧨",
+      Python: "🐍",
+      HTML: "📇",
+      CSS: "🎨",
+      TSQL: "✈️",
+    };
+
+    const emoji = languageEmojis[repo.language] || "💻";
+    const description = repo.description || "A cool project";
+
+    console.log(`${emoji} ${repo.name}: ⭐ ${repo.stargazers_count}`);
+  });
+}
+
+// ===== Update Stats Numbers =====
+function updateStats(data) {
+  const statItems = document.querySelectorAll(".stat-number");
+  statItems[0].setAttribute("data-target", data.projects);
+  statItems[1].setAttribute("data-target", data.contributions);
+  statItems[2].setAttribute("data-target", data.followers);
+
+  // Mark stats as animated
+  statsAnimated = true;
+
+  // Animate counters with new values
+  statItems.forEach((stat) => {
+    const target = parseInt(stat.getAttribute("data-target"));
+    stat.textContent = "0"; // Reset to 0
+    animateCounter(stat, target);
+  });
+}
+
 // ===== Theme Toggle =====
 const themeToggle = document.getElementById("themeToggle");
 const htmlElement = document.documentElement;
@@ -63,6 +181,8 @@ function typeEffect() {
 
 // Start typing animation
 document.addEventListener("DOMContentLoaded", () => {
+  // Fetch GitHub data on page load
+  fetchGitHubData();
   setTimeout(typeEffect, 1000);
 });
 
@@ -126,6 +246,8 @@ function animateCounter(element, target, duration = 2000) {
 }
 
 // ===== Intersection Observer for Animations =====
+let statsAnimated = false; // Track if stats have been animated
+
 const observerOptions = {
   threshold: 0.2,
   rootMargin: "0px 0px -100px 0px",
@@ -137,12 +259,11 @@ const observer = new IntersectionObserver((entries) => {
       entry.target.style.opacity = "1";
       entry.target.style.transform = "translateY(0)";
 
-      // Animate counters when about section is visible
-      if (entry.target.classList.contains("about")) {
-        document.querySelectorAll(".stat-number").forEach((stat) => {
-          const target = parseInt(stat.getAttribute("data-target"));
-          animateCounter(stat, target);
-        });
+      // Don't animate counters here - let the GitHub fetch do it
+      // This prevents double animation
+      if (entry.target.classList.contains("about") && !statsAnimated) {
+        // Mark as ready to animate when data is fetched
+        entry.target.setAttribute('data-ready', 'true');
       }
 
       // Animate skill bars when skills section is visible
@@ -201,13 +322,12 @@ contactForm.addEventListener("submit", (e) => {
   // Here you would typically send the form data to a server
   // For now, we'll just show an alert
   alert(
-    `Thank you, ${name}! Your message has been received.\n\nI'll get back to you at ${email} as soon as possible.`
+    `Thank you, ${name}! Your message has been received.\n\nI'll get back to you at ${email} as soon as possible.`,
   );
 
   // Reset form
   contactForm.reset();
 });
-
 
 // ===== Active Navigation Link Highlighting =====
 const sections = document.querySelectorAll(".section, .hero");
@@ -317,15 +437,15 @@ window.addEventListener("load", () => {
 // ===== Console Message =====
 console.log(
   "%c👋 Welcome to my portfolio!",
-  "font-size: 20px; font-weight: bold; color: #6366f1;"
+  "font-size: 20px; font-weight: bold; color: #6366f1;",
 );
 console.log(
   "%cInterested in the code? Check out my GitHub:",
-  "font-size: 14px; color: #64748b;"
+  "font-size: 14px; color: #64748b;",
 );
 console.log(
   "%chttps://github.com/Mr-MRF-Dev",
-  "font-size: 14px; color: #ec4899;"
+  "font-size: 14px; color: #ec4899;",
 );
 
 // ===== Easter Egg: Konami Code =====
