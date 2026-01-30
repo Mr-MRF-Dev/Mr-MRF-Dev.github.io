@@ -329,9 +329,19 @@ body {
   color: var(--primary-color);
 }
 
+[data-theme="dark"] .btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  border: 2px solid transparent;
+}
+
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
 }
 
 .btn-secondary {
@@ -805,6 +815,11 @@ body {
   color: white;
   text-align: center;
   padding: 2rem;
+}
+
+[data-theme="dark"] .footer {
+  background: #0a0f1e;
+  border-top: 1px solid var(--border-color);
 }
 
 .footer p {
