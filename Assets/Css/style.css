@@ -451,8 +451,8 @@ body {
 }
 
 .about-image-wrapper {
-  width: 100%;
-  max-width: 400px;
+  /* width: 100%; */
+  width: 405px;
   aspect-ratio: 1;
   border-radius: 20px;
   overflow: hidden;
@@ -504,7 +504,7 @@ body {
 
 .stat-item {
   text-align: center;
-  padding: 1.5rem;
+  padding: 0.3rem 0.6rem;
   background: linear-gradient(
     135deg,
     var(--primary-color),
@@ -567,6 +567,8 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow-md);
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
@@ -651,7 +653,21 @@ body {
 }
 
 .project-info {
-  padding: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  flex-grow: 1;
+}
+
+.project-description {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .project-tags {
@@ -667,6 +683,59 @@ body {
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
+}
+
+/* ===== Project Footer ===== */
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  border-top: 1px solid var(--bg-light);
+  background: var(--bg-white);
+  margin-top: auto;
+}
+
+.repo-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+.repo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.repo-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.project-stats {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.project-stats .stat-item {
+  font-weight: 600;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 /* ===== Load More Button ===== */
