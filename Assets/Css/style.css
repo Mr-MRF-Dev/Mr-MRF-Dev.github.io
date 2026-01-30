@@ -341,7 +341,7 @@ body {
 [data-theme="dark"] .btn-primary {
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   color: white;
-  border: 2px solid transparent;
+  border: none;
 }
 
 .btn-primary:hover {

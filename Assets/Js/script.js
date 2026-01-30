@@ -23,22 +23,15 @@ async function fetchGitHubData() {
     if (!reposResponse.ok) throw new Error("Failed to fetch repos");
     const reposData = await reposResponse.json();
 
-    // Calculate total contributions (sum of all repo stars + forks + repos)
+    // Calculate total stars across all repos
     const totalStars = reposData.reduce(
       (sum, repo) => sum + repo.stargazers_count,
       0,
     );
-    const totalForks = reposData.reduce(
-      (sum, repo) => sum + repo.forks_count,
-      0,
-    );
-    const estimatedContributions =
-      totalStars * 10 + totalForks * 5 + userData.public_repos * 50;
 
     // Update stats with real data
     updateStats({
       projects: userData.public_repos,
-      contributions: estimatedContributions,
       followers: userData.followers,
     });
 
@@ -102,8 +95,7 @@ function updateProjects(repos) {
 function updateStats(data) {
   const statItems = document.querySelectorAll(".stat-number");
   statItems[0].setAttribute("data-target", data.projects);
-  statItems[1].setAttribute("data-target", data.contributions);
-  statItems[2].setAttribute("data-target", data.followers);
+  statItems[1].setAttribute("data-target", data.followers);
 
   // Mark stats as animated
   statsAnimated = true;
