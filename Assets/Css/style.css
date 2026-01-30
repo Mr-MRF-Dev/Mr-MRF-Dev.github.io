@@ -746,9 +746,9 @@ body {
 }
 
 .contact-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 3rem;
 }
 
@@ -803,6 +803,8 @@ body {
   padding: 2rem;
   border-radius: 15px;
   box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 600px;
 }
 
 .contact-form {
