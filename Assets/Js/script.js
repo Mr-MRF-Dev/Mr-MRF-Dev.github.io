@@ -2,6 +2,15 @@
 const GITHUB_USERNAME = "Mr-MRF-Dev";
 const GITHUB_API_BASE = "https://api.github.com";
 
+// ===== Projects Pagination State =====
+let allRepos = [];
+let displayedProjects = 0;
+const PROJECTS_PER_PAGE = 6;
+
+let allStarredRepos = [];
+let displayedStarred = 0;
+const STARRED_PER_PAGE = 6;
+
 // ===== Fetch GitHub User Data =====
 async function fetchGitHubData() {
   // Add loading state
@@ -16,15 +25,15 @@ async function fetchGitHubData() {
     if (!userResponse.ok) throw new Error("Failed to fetch user data");
     const userData = await userResponse.json();
 
-    // Fetch repositories
+    // Fetch all repositories
     const reposResponse = await fetch(
       `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`,
     );
     if (!reposResponse.ok) throw new Error("Failed to fetch repos");
-    const reposData = await reposResponse.json();
+    allRepos = await reposResponse.json();
 
     // Calculate total stars across all repos
-    const totalStars = reposData.reduce(
+    const totalStars = allRepos.reduce(
       (sum, repo) => sum + repo.stargazers_count,
       0,
     );
@@ -38,6 +47,12 @@ async function fetchGitHubData() {
     // Remove loading state
     statNumbers.forEach((stat) => stat.classList.remove("loading"));
 
+    // Display initial projects
+    displayProjects();
+
+    // Fetch starred repos
+    fetchStarredRepos();
+
     console.log("✅ GitHub data fetched successfully!");
     console.log(
       `📊 Repos: ${userData.public_repos} | ⭐ Stars: ${totalStars} | 👥 Followers: ${userData.followers}`,
@@ -46,49 +61,161 @@ async function fetchGitHubData() {
     console.error("❌ Error fetching GitHub data:", error);
     // Remove loading state even on error
     statNumbers.forEach((stat) => stat.classList.remove("loading"));
-    // Keep default HTML values if fetch fails
+    // Show error message in projects grid
+    const projectsGrid = document.getElementById("projectsGrid");
+    if (projectsGrid) {
+      projectsGrid.innerHTML =
+        '<p style="text-align: center; padding: 2rem; color: var(--text-secondary);">Failed to load projects. Please try again later.</p>';
+    }
   }
 }
 
-// ===== Update Projects Section (Optional) =====
-function updateProjects(repos) {
-  // Filter for featured projects (you can customize this)
-  const featuredProjects = [
-    "Angry-Task",
-    "LC3-Simulator",
-    "Airline-Data-Warehouse",
-    "NetLab-Archive",
-    "Mr-Minesweeper",
-    "Simple-Profile-Card",
-  ];
+// ===== Display Projects with Pagination =====
+function displayProjects() {
+  const projectsGrid = document.getElementById("projectsGrid");
+  const loadMoreContainer = document.getElementById("loadMoreContainer");
 
-  const featuredRepos = repos
-    .filter((repo) => featuredProjects.includes(repo.name))
-    .slice(0, 6);
+  if (!projectsGrid) return;
 
-  const projectsGrid = document.querySelector(".projects-grid");
-  if (!projectsGrid || featuredRepos.length === 0) return;
+  // Get next batch of projects
+  const projectsToShow = allRepos.slice(
+    displayedProjects,
+    displayedProjects + PROJECTS_PER_PAGE,
+  );
 
-  // Optionally clear and rebuild projects
-  // projectsGrid.innerHTML = '';
-
-  featuredRepos.forEach((repo) => {
-    const languageEmojis = {
-      TypeScript: "💢",
-      JavaScript: "📜",
-      "C++": "🖥️",
-      C: "🧨",
-      Python: "🐍",
-      HTML: "📇",
-      CSS: "🎨",
-      TSQL: "✈️",
-    };
-
-    const emoji = languageEmojis[repo.language] || "💻";
-    const description = repo.description || "A cool project";
-
-    console.log(`${emoji} ${repo.name}: ⭐ ${repo.stargazers_count}`);
+  // Create and append project cards
+  projectsToShow.forEach((repo) => {
+    const card = createProjectCard(repo, false);
+    projectsGrid.appendChild(card);
   });
+
+  displayedProjects += projectsToShow.length;
+
+  // Show/hide Load More button
+  if (loadMoreContainer) {
+    loadMoreContainer.style.display =
+      displayedProjects < allRepos.length ? "flex" : "none";
+  }
+}
+
+// ===== Create Project Card Element =====
+function createProjectCard(repo, isStarred = false) {
+  const languageEmojis = {
+    TypeScript: "💢",
+    JavaScript: "📜",
+    "C++": "🖥️",
+    C: "🧨",
+    Python: "🐍",
+    HTML: "📇",
+    CSS: "🎨",
+    TSQL: "✈️",
+    Java: "☕",
+    Rust: "🦀",
+    Go: "🐹",
+    Ruby: "💎",
+    PHP: "🐘",
+    Swift: "🍎",
+    Kotlin: "🎯",
+  };
+
+  const emoji = languageEmojis[repo.language] || "💻";
+  const description = repo.description || "A cool project";
+  const homepage = repo.homepage || repo.html_url;
+
+  const card = document.createElement("div");
+  card.className = "project-card";
+  card.innerHTML = `
+    <div class="project-image">
+      <img
+        src="https://opengraph.githubassets.com/1/${repo.full_name}"
+        alt="${repo.name}"
+        onerror="this.src='https://via.placeholder.com/400x250?text=${encodeURIComponent(repo.name)}'"
+      />
+      <div class="project-overlay">
+        <h3>${emoji} ${repo.name.replace(/-/g, " ")}</h3>
+        <p>${description}</p>
+        <div class="project-links">
+          <a href="${homepage}" target="_blank" class="project-btn">View Project</a>
+          <a href="${repo.html_url}" target="_blank" class="project-btn">Code</a>
+        </div>
+      </div>
+    </div>
+    <div class="project-info">
+      <div class="project-tags">
+        ${repo.language ? `<span class="tag">${repo.language}</span>` : ""}
+        ${
+          repo.topics
+            ? repo.topics
+                .slice(0, 2)
+                .map((topic) => `<span class="tag">${topic}</span>`)
+                .join("")
+            : ""
+        }
+        <span class="tag">⭐ ${repo.stargazers_count}</span>
+        ${isStarred ? `<span class="tag">👤 ${repo.owner.login}</span>` : ""}
+      </div>
+    </div>
+  `;
+
+  return card;
+}
+
+// ===== Fetch Starred Repositories =====
+async function fetchStarredRepos() {
+  try {
+    const starredResponse = await fetch(
+      `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/starred?per_page=100`,
+    );
+    if (!starredResponse.ok) throw new Error("Failed to fetch starred repos");
+
+    const starredData = await starredResponse.json();
+
+    // Filter out repos owned by the user
+    allStarredRepos = starredData.filter(
+      (repo) =>
+        repo.owner.login.toLowerCase() !== GITHUB_USERNAME.toLowerCase(),
+    );
+
+    // Display initial starred projects
+    displayStarredProjects();
+
+    console.log(`⭐ Starred repos loaded: ${allStarredRepos.length}`);
+  } catch (error) {
+    console.error("❌ Error fetching starred repos:", error);
+    const starredGrid = document.getElementById("starredGrid");
+    if (starredGrid) {
+      starredGrid.innerHTML =
+        '<p style="text-align: center; padding: 2rem; color: var(--text-secondary);">Failed to load starred projects.</p>';
+    }
+  }
+}
+
+// ===== Display Starred Projects with Pagination =====
+function displayStarredProjects() {
+  const starredGrid = document.getElementById("starredGrid");
+  const loadMoreContainer = document.getElementById("loadMoreStarredContainer");
+
+  if (!starredGrid) return;
+
+  // Get next batch of starred projects
+  const projectsToShow = allStarredRepos.slice(
+    displayedStarred,
+    displayedStarred + STARRED_PER_PAGE,
+  );
+
+  // Create and append project cards
+  projectsToShow.forEach((repo) => {
+    const card = createProjectCard(repo, true);
+    starredGrid.appendChild(card);
+  });
+
+  displayedStarred += projectsToShow.length;
+
+  // Show/hide Load More button
+  if (loadMoreContainer) {
+    loadMoreContainer.style.display =
+      displayedStarred < allStarredRepos.length ? "flex" : "none";
+  }
 }
 
 // ===== Update Stats Numbers =====
@@ -255,7 +382,7 @@ const observer = new IntersectionObserver((entries) => {
       // This prevents double animation
       if (entry.target.classList.contains("about") && !statsAnimated) {
         // Mark as ready to animate when data is fetched
-        entry.target.setAttribute('data-ready', 'true');
+        entry.target.setAttribute("data-ready", "true");
       }
 
       // Animate skill bars when skills section is visible
@@ -467,3 +594,19 @@ document.addEventListener("keydown", (e) => {
     }, 5000);
   }
 });
+
+// ===== Load More Projects Button =====
+const loadMoreBtn = document.getElementById("loadMoreBtn");
+if (loadMoreBtn) {
+  loadMoreBtn.addEventListener("click", () => {
+    displayProjects();
+  });
+}
+
+// ===== Load More Starred Projects Button =====
+const loadMoreStarredBtn = document.getElementById("loadMoreStarredBtn");
+if (loadMoreStarredBtn) {
+  loadMoreStarredBtn.addEventListener("click", () => {
+    displayStarredProjects();
+  });
+}
