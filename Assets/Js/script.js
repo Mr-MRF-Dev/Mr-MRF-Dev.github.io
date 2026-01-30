@@ -7,10 +7,6 @@ let allRepos = [];
 let displayedProjects = 0;
 const PROJECTS_PER_PAGE = 6;
 
-let allStarredRepos = [];
-let displayedStarred = 0;
-const STARRED_PER_PAGE = 6;
-
 // ===== Fetch GitHub User Data =====
 async function fetchGitHubData() {
   // Add loading state
@@ -50,9 +46,6 @@ async function fetchGitHubData() {
     // Display initial projects
     displayProjects();
 
-    // Fetch starred repos
-    fetchStarredRepos();
-
     console.log("✅ GitHub data fetched successfully!");
     console.log(
       `📊 Repos: ${userData.public_repos} | ⭐ Stars: ${totalStars} | 👥 Followers: ${userData.followers}`,
@@ -85,7 +78,7 @@ function displayProjects() {
 
   // Create and append project cards
   projectsToShow.forEach((repo) => {
-    const card = createProjectCard(repo, false);
+    const card = createProjectCard(repo);
     projectsGrid.appendChild(card);
   });
 
@@ -99,7 +92,7 @@ function displayProjects() {
 }
 
 // ===== Create Project Card Element =====
-function createProjectCard(repo, isStarred = false) {
+function createProjectCard(repo) {
   const languageEmojis = {
     TypeScript: "💢",
     JavaScript: "📜",
@@ -152,70 +145,11 @@ function createProjectCard(repo, isStarred = false) {
             : ""
         }
         <span class="tag">⭐ ${repo.stargazers_count}</span>
-        ${isStarred ? `<span class="tag">👤 ${repo.owner.login}</span>` : ""}
       </div>
     </div>
   `;
 
   return card;
-}
-
-// ===== Fetch Starred Repositories =====
-async function fetchStarredRepos() {
-  try {
-    const starredResponse = await fetch(
-      `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/starred?per_page=100`,
-    );
-    if (!starredResponse.ok) throw new Error("Failed to fetch starred repos");
-
-    const starredData = await starredResponse.json();
-
-    // Filter out repos owned by the user
-    allStarredRepos = starredData.filter(
-      (repo) =>
-        repo.owner.login.toLowerCase() !== GITHUB_USERNAME.toLowerCase(),
-    );
-
-    // Display initial starred projects
-    displayStarredProjects();
-
-    console.log(`⭐ Starred repos loaded: ${allStarredRepos.length}`);
-  } catch (error) {
-    console.error("❌ Error fetching starred repos:", error);
-    const starredGrid = document.getElementById("starredGrid");
-    if (starredGrid) {
-      starredGrid.innerHTML =
-        '<p style="text-align: center; padding: 2rem; color: var(--text-secondary);">Failed to load starred projects.</p>';
-    }
-  }
-}
-
-// ===== Display Starred Projects with Pagination =====
-function displayStarredProjects() {
-  const starredGrid = document.getElementById("starredGrid");
-  const loadMoreContainer = document.getElementById("loadMoreStarredContainer");
-
-  if (!starredGrid) return;
-
-  // Get next batch of starred projects
-  const projectsToShow = allStarredRepos.slice(
-    displayedStarred,
-    displayedStarred + STARRED_PER_PAGE,
-  );
-
-  // Create and append project cards
-  projectsToShow.forEach((repo) => {
-    const card = createProjectCard(repo, true);
-    starredGrid.appendChild(card);
-  });
-
-  displayedStarred += projectsToShow.length;
-
-  // Show/hide Load More button
-  if (loadMoreContainer) {
-    loadMoreContainer.style.display =
-      displayedStarred < allStarredRepos.length ? "flex" : "none";
-  }
 }
 
 // ===== Update Stats Numbers =====
@@ -600,13 +534,5 @@ const loadMoreBtn = document.getElementById("loadMoreBtn");
 if (loadMoreBtn) {
   loadMoreBtn.addEventListener("click", () => {
     displayProjects();
-  });
-}
-
-// ===== Load More Starred Projects Button =====
-const loadMoreStarredBtn = document.getElementById("loadMoreStarredBtn");
-if (loadMoreStarredBtn) {
-  loadMoreStarredBtn.addEventListener("click", () => {
-    displayStarredProjects();
   });
 }
