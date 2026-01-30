@@ -246,7 +246,7 @@ function typeEffect() {
 document.addEventListener("DOMContentLoaded", () => {
   // Set current year in footer
   document.getElementById("currentYear").textContent = new Date().getFullYear();
-  
+
   // Fetch GitHub data on page load
   fetchGitHubData();
   setTimeout(typeEffect, 1000);
