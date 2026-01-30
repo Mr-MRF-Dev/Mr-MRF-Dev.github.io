@@ -67,7 +67,3 @@ We welcome any contributions you may have. If you're interested in helping out, 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Made with 🍀 and lots of ☕
