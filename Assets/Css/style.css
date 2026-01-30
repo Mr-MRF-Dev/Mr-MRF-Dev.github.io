@@ -103,6 +103,10 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
+[data-theme="dark"] .navbar.scrolled {
+  background: rgba(30, 41, 59, 0.98);
+}
+
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
