@@ -373,28 +373,6 @@ backToTopButton.addEventListener("click", () => {
   });
 });
 
-// ===== Contact Form Handling =====
-const contactForm = document.getElementById("contactForm");
-
-contactForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  // Get form values
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const subject = document.getElementById("subject").value;
-  const message = document.getElementById("message").value;
-
-  // Here you would typically send the form data to a server
-  // For now, we'll just show an alert
-  alert(
-    `Thank you, ${name}! Your message has been received.\n\nI'll get back to you at ${email} as soon as possible.`,
-  );
-
-  // Reset form
-  contactForm.reset();
-});
-
 // ===== Active Navigation Link Highlighting =====
 const sections = document.querySelectorAll(".section, .hero");
 const navLinks = document.querySelectorAll(".nav-link");
