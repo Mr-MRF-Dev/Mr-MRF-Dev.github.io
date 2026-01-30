@@ -137,14 +137,15 @@ function createProjectCard(repo) {
       <div class="project-tags">
         ${repo.language ? `<span class="tag">${repo.language}</span>` : ""}
         ${
-          repo.topics
+          repo.topics && repo.topics.length > 0
             ? repo.topics
-                .slice(0, 2)
+                .slice(0, 4)
                 .map((topic) => `<span class="tag">${topic}</span>`)
                 .join("")
             : ""
         }
         <span class="tag">⭐ ${repo.stargazers_count}</span>
+        ${repo.forks_count > 0 ? `<span class="tag">🍴 ${repo.forks_count}</span>` : ""}
       </div>
     </div>
   `;

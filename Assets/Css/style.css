@@ -557,8 +557,8 @@ body {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
 }
 
 .project-card {
@@ -577,7 +577,9 @@ body {
 .project-image {
   position: relative;
   overflow: hidden;
-  height: 250px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-light);
 }
 
 .project-image img {
