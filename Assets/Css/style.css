@@ -987,12 +987,7 @@ body {
 
 /* ===== Get In Touch Section ===== */
 .contact {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  background-attachment: fixed;
-}
-
-[data-theme="dark"] .contact {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: var(--bg-light);
 }
 
 .contact-wrapper {
@@ -1003,21 +998,21 @@ body {
 }
 
 .contact-section {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-white);
   padding: 2rem;
   border-radius: 1rem;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
   transition: var(--transition);
 }
 
 .contact-section:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg);
 }
 
 .contact-section h3 {
-  color: white;
+  color: var(--text-dark);
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -1034,22 +1029,23 @@ body {
   justify-content: center;
   width: 60px;
   height: 60px;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   border-radius: 50%;
   color: white;
   text-decoration: none;
   transition: var(--transition);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: none;
+  box-shadow: var(--shadow-md);
 }
 
 .contact-social-icon:hover {
-  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-5px) scale(1.1);
-  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.1);
 }
 
 .contact-email-text {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-light);
   margin-bottom: 1.5rem;
   line-height: 1.6;
   font-size: 0.95rem;
@@ -1059,18 +1055,19 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: white;
-  color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
   padding: 0.75rem 2rem;
   border-radius: 50px;
   font-weight: 600;
   transition: var(--transition);
+  box-shadow: var(--shadow-md);
 }
 
 .contact-email-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  background: #f0f4ff;
+  box-shadow: var(--shadow-lg);
+  filter: brightness(1.1);
 }
 
 /* ===== Footer ===== */
