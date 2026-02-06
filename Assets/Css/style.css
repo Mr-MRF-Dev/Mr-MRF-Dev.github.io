@@ -126,14 +126,14 @@ body {
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0.6rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--text-dark);
   cursor: pointer;
@@ -1192,13 +1192,26 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+  .nav-container {
+    padding: 0.6rem 1rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+  }
+
   .menu-toggle {
     display: flex;
   }
 
   .nav-menu {
     position: fixed;
-    top: 70px;
+    top: 58px;
     left: -100%;
     width: 100%;
     flex-direction: column;
