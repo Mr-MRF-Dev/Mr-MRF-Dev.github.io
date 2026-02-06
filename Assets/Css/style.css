@@ -1269,6 +1269,11 @@ body {
     justify-content: center;
   }
 
+  .about-image-wrapper {
+    width: 100%;
+    max-width: 300px;
+  }
+
   .about-stats {
     grid-template-columns: 1fr;
   }
