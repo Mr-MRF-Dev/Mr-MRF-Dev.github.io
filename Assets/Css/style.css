@@ -1242,6 +1242,10 @@ body {
     height: 250px;
   }
 
+  .scroll-indicator {
+    display: none;
+  }
+
   .about-content {
     grid-template-columns: 1fr;
     text-align: center;
