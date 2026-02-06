@@ -348,11 +348,7 @@ body {
 }
 
 .btn-primary {
-  background: white;
-  color: var(--primary-color);
-}
-
-[data-theme="dark"] .btn-primary {
+  padding: 1rem 2rem;
   background: linear-gradient(
     135deg,
     var(--primary-color),
@@ -1029,7 +1025,11 @@ body {
   justify-content: center;
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
   border-radius: 50%;
   color: white;
   text-decoration: none;
@@ -1049,25 +1049,6 @@ body {
   margin-bottom: 1.5rem;
   line-height: 1.6;
   font-size: 0.95rem;
-}
-
-.contact-email-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-  color: white;
-  padding: 0.75rem 2rem;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: var(--transition);
-  box-shadow: var(--shadow-md);
-}
-
-.contact-email-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-  filter: brightness(1.1);
 }
 
 /* ===== Footer ===== */
@@ -1342,10 +1323,5 @@ body {
 
   .contact-section {
     padding: 1.5rem;
-  }
-
-  .contact-email-btn {
-    width: 100%;
-    justify-content: center;
   }
 }
