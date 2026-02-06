@@ -315,8 +315,8 @@ function animateCounter(element, target, duration = 2000) {
 let statsAnimated = false; // Track if stats have been animated
 
 const observerOptions = {
-  threshold: 0.2,
-  rootMargin: "0px 0px -100px 0px",
+  threshold: 0.05,
+  rootMargin: "0px 0px 0px 0px",
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -350,8 +350,8 @@ const observer = new IntersectionObserver((entries) => {
 // Observe sections for animation
 document.querySelectorAll(".section").forEach((section) => {
   section.style.opacity = "0";
-  section.style.transform = "translateY(50px)";
-  section.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+  section.style.transform = "translateY(30px)";
+  section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
   observer.observe(section);
 });
 
