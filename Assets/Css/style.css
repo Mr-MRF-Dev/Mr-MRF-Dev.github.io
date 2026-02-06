@@ -519,7 +519,7 @@ body {
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
 }
 
 .stat-number.loading::after {
@@ -542,6 +542,7 @@ body {
 }
 
 .stat-label {
+  transform: translateY(-0.5rem);
   font-size: 0.9rem;
   opacity: 0.9;
 }
