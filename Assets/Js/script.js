@@ -206,7 +206,7 @@ themeToggle.addEventListener("click", () => {
 const typingText = document.getElementById("typingText");
 const phrases = [
   "Full Stack Developer",
-  "Web Designer",
+  "Web Developer",
   "Problem Solver",
   "Creative Thinker",
   "Tech Enthusiast",
