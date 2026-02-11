@@ -358,8 +358,8 @@ body {
   padding: 1rem 2rem;
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--accent-color)
+    #0f766e,
+    #0369a1
   );
   color: white;
   border: none;
@@ -367,11 +367,11 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(15, 118, 110, 0.4);
 }
 
 [data-theme="dark"] .btn-primary:hover {
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 10px 30px rgba(20, 184, 166, 0.5);
 }
 
 .btn-secondary {
@@ -707,8 +707,8 @@ body {
   padding: 0.5rem 1rem;
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--accent-color)
+    #0f766e,
+    #0369a1
   );
   color: white;
   text-decoration: none;
@@ -858,8 +858,8 @@ body {
   justify-content: center;
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--accent-color)
+    #0f766e,
+    #0369a1
   );
   border-radius: 12px;
 }
@@ -940,8 +940,8 @@ body {
   justify-content: center;
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--accent-color)
+    #0f766e,
+    #0369a1
   );
   color: white;
   border-radius: 50%;
@@ -967,8 +967,8 @@ body {
   padding: 0.75rem 1.5rem;
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--accent-color)
+    #0f766e,
+    #0369a1
   );
   color: white;
   border-radius: 50px;
@@ -1035,8 +1035,8 @@ body {
   height: 60px;
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--accent-color)
+    #0f766e,
+    #0369a1
   );
   border-radius: 50%;
   color: white;
@@ -1086,8 +1086,8 @@ body {
   height: 50px;
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--accent-color)
+    #0f766e,
+    #0369a1
   );
   color: white;
   border: none;
