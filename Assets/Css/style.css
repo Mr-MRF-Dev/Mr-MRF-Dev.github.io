@@ -348,6 +348,10 @@ body {
 }
 
 .btn-primary {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
   padding: 1rem 2rem;
   background: linear-gradient(
     135deg,
