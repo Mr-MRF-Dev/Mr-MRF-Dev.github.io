@@ -1248,6 +1248,15 @@ body {
   .section {
     padding: 3rem 0;
   }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-section {
+    padding: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -1292,14 +1301,5 @@ body {
 
   .stat-number {
     font-size: 2rem;
-  }
-
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .contact-section {
-    padding: 1.5rem;
   }
 }
