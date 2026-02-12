@@ -727,7 +727,6 @@ body {
 
 .project-stats .stat-item {
   font-weight: 600;
-  color: var(--text-light);
   display: flex;
   align-items: center;
   gap: 0.2rem;
