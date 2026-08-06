@@ -1,26 +1,24 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Meta Tags -->
-    <meta charset="UTF-8" />
+    <meta charset="</head>UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Mr MRF Dev - Full Stack Developer Portfolio"
+      content="Mr MRF Dev — Full Stack Developer building thoughtful, high-performance web products."
     />
+    <meta name="theme-color" content="#05070a" />
 
-    <!-- Link Tags -->
     <link rel="stylesheet" href="Assets/Css/normalize.css" />
     <link rel="stylesheet" href="Assets/Css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- FavIcon -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -40,437 +38,336 @@
     />
     <link rel="manifest" href="Assets/Favicon/site.webmanifest" />
 
-    <title>Mr MRF Dev - Full Stack Developer</title>
+    <title>Mr MRF Dev — Full Stack Developer</title>
   </head>
 
   <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <div class="page-noise" aria-hidden="true"></div>
+
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
       <div class="nav-container">
-        <div class="logo">Mr MRF<span class="accent">.</span>Dev</div>
+        <a href="#home" class="logo" aria-label="Mr MRF Dev home">
+          <span class="logo-mark">M</span>
+          <span>Mr MRF<span class="accent">.</span>Dev</span>
+        </a>
+
         <ul class="nav-menu" id="navMenu">
           <li><a href="#home" class="nav-link">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#projects" class="nav-link">Work</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#contact" class="nav-link">Get In Touch</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
+
         <div class="nav-right">
-          <a href="#contact" class="btn btn-primary nav-cta">Let's Talk</a>
           <button
             class="theme-toggle"
             id="themeToggle"
-            aria-label="Toggle theme"
+            type="button"
+            aria-label="Toggle color theme"
           >
             <svg
               class="sun-icon"
-              width="20"
-              height="20"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
+              aria-hidden="true"
             >
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41" />
             </svg>
             <svg
               class="moon-icon"
-              width="20"
-              height="20"
+              width="18"
+              height="18"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
+              aria-hidden="true"
             >
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
           </button>
-          <button class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
+          <a href="#contact" class="nav-contact">Let’s talk</a>
+          <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Toggle navigation menu"
+          >
+            <span></span><span></span><span></span>
           </button>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <div class="hero-text">
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            Available for new projects
-          </div>
-          <h1 class="hero-title">Hi, I'm <span class="accent">Mr MRF</span></h1>
-          <div class="typing-container">
+    <main>
+      <section id="home" class="hero">
+        <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
+
+        <div class="hero-content">
+          <div class="hero-copy">
+            <div class="availability">
+              <span class="availability-dot"></span>
+              Available for selected projects
+            </div>
+
+            <p class="hero-kicker">Full-stack developer · Creative problem solver</p>
+            <h1 class="hero-title">
+              I build digital products that feel
+              <span>simple, fast, and human.</span>
+            </h1>
             <p class="hero-subtitle">
-              I'm a <span class="typing-text" id="typingText"></span>
+              Hi, I’m Mr MRF — a
+              <span class="typing-text" id="typingText"></span>
             </p>
-          </div>
-          <p class="hero-description">
-            Passionate developer creating amazing web experiences with modern
-            technologies. Let's build something great together!
-          </p>
-          <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary">View My Work</a>
-            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-          </div>
-        </div>
-        <div class="hero-image">
-          <div class="hero-image-blob"></div>
-          <div class="image-wrapper">
-            <img src="Assets/Images/Mr-MRF-Dev.png" alt="Mr MRF Dev" />
-          </div>
-          <div class="hero-float-card">
-            <span class="hero-float-icon">💻</span>
-            <div class="hero-float-text">
-              <strong>3+ Years</strong>
-              <small>Building products</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="scroll-indicator">
-        <span>Scroll Down</span>
-        <div class="mouse"></div>
-      </div>
-    </section>
+            <p class="hero-description">
+              I turn complex ideas into polished web experiences using modern
+              frontend systems, reliable backends, and thoughtful interaction
+              design.
+            </p>
 
-    <!-- About Section -->
-    <section id="about" class="section about">
-      <div class="container">
-        <span class="section-eyebrow">👋 Get To Know Me</span>
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-          <div class="about-image">
-            <div class="about-image-wrapper">
-              <img src="Assets/Images/Mr-MRF-Dev.png" alt="About Mr MRF" />
+            <div class="hero-actions">
+              <a href="#projects" class="button button-primary">
+                Explore my work
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a href="mailto:mr.mrf.dev@gmail.com" class="button button-ghost">
+                Email me
+              </a>
+            </div>
+
+            <div class="hero-stack" aria-label="Primary technologies">
+              <span>React</span>
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>ASP.NET Core</span>
             </div>
           </div>
-          <div class="about-text">
-            <h3>Full Stack Developer & Creative Thinker</h3>
+
+          <div class="hero-visual">
+            <div class="portrait-frame">
+              <div class="portrait-topbar">
+                <div class="window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <span>profile.dev</span>
+              </div>
+              <div class="portrait-body">
+                <img src="Assets/Images/Mr-MRF-Dev.png" alt="Mr MRF Dev" />
+                <div class="portrait-gradient" aria-hidden="true"></div>
+                <div class="portrait-caption">
+                  <span>Based online</span>
+                  <strong>Building for the web</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="floating-card floating-card-code">
+              <span class="floating-icon">&lt;/&gt;</span>
+              <div><strong>Clean code</strong><small>Built to scale</small></div>
+            </div>
+            <div class="floating-card floating-card-status">
+              <span class="status-ring"></span>
+              <div><strong>Open to work</strong><small>Let’s create something</small></div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#about" class="scroll-cue" aria-label="Scroll to about section">
+          <span>Scroll to discover</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="container">
+          <div class="section-heading section-heading-left">
+            <span class="section-index">01 / About</span>
+            <h2 class="section-title">Developer mindset.<br />Product perspective.</h2>
+          </div>
+
+          <div class="about-bento">
+            <article class="bento-card about-story">
+              <span class="card-label">My approach</span>
+              <h3>Full Stack Developer & Creative Thinker</h3>
+              <p>
+                I’m Mr MRF, a full-stack developer specializing in React,
+                Next.js, Angular, ASP.NET Core, Express.js, PostgreSQL, and
+                Prisma. I build complete products—not disconnected screens.
+              </p>
+              <p>
+                Clear communication, maintainable systems, and a strong eye for
+                detail shape every project I work on.
+              </p>
+              <div class="about-values">
+                <span>⚡ Performance</span>
+                <span>◈ Type safety</span>
+                <span>✦ Clear UX</span>
+              </div>
+            </article>
+
+            <article class="bento-card about-quote">
+              <span class="quote-mark">“</span>
+              <p>Good software should make difficult things feel effortless.</p>
+              <span class="quote-author">— How I approach every build</span>
+            </article>
+
+            <div class="bento-card stat-item">
+              <div class="stat-number"></div>
+              <div class="stat-label">Public projects</div>
+            </div>
+            <div class="bento-card stat-item">
+              <div class="stat-number"></div>
+              <div class="stat-label">GitHub followers</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section projects">
+        <div class="container">
+          <div class="section-heading section-heading-split">
+            <div>
+              <span class="section-index">02 / Selected work</span>
+              <h2 class="section-title">Projects built with purpose.</h2>
+            </div>
             <p>
-              🍀 Hello! I'm Mr MRF, a passionate full-stack developer
-              specializing in modern web technologies. I build complete
-              applications with React, Next.js, and Angular on the frontend, and
-              ASP.NET Core, Express.js with PostgreSQL and Prisma on the
-              backend. My expertise spans from low-level C/C++ to
-              TypeScript-based architectures for robust, type-safe solutions.
+              A live collection of repositories from GitHub—from experiments to
+              complete applications.
             </p>
-            <p>
-              I excel at problem-solving with a creative mindset, collaborating
-              effectively with teams, and adapting to changing requirements. I'm
-              committed to continuous learning and clear communication, whether
-              translating technical concepts for stakeholders or documenting
-              clean, maintainable code.
+          </div>
+
+          <div class="projects-grid" id="projectsGrid">
+            <!-- Projects are loaded dynamically from GitHub -->
+          </div>
+          <div
+            class="load-more-container"
+            id="loadMoreContainer"
+            style="display: none"
+          >
+            <button class="button button-primary load-more-btn" id="loadMoreBtn">
+              Load more projects
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section skills">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-index">03 / Capabilities</span>
+            <h2 class="section-title">Tools I use to ship ideas.</h2>
+            <p class="section-subtitle">
+              A practical stack for designing, building, and maintaining modern products.
             </p>
-            <div class="about-stats">
-              <div class="stat-item">
-                <div class="stat-number"></div>
-                <div class="stat-label">Projects</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number"></div>
-                <div class="stat-label">Followers</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section projects">
-      <div class="container">
-        <span class="section-eyebrow">🚀 Portfolio</span>
-        <h2 class="section-title">My Projects</h2>
-        <p class="section-subtitle">Here are some of my recent works</p>
-        <div class="projects-grid" id="projectsGrid">
-          <!-- Projects will be loaded dynamically -->
-        </div>
-        <div
-          class="load-more-container"
-          id="loadMoreContainer"
-          style="display: none"
-        >
-          <button class="btn btn-primary load-more-btn" id="loadMoreBtn">
-            Load More Projects
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section skills">
-      <div class="container">
-        <span class="section-eyebrow">🧠 Expertise</span>
-        <h2 class="section-title">My Skills</h2>
-        <p class="section-subtitle">Technologies I work with</p>
-        <div class="skills-content">
-          <div class="skill-category">
-            <h3>🎨 Frontend Development</h3>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>React & Next.js</span>
-                <span class="skill-percent">90%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="90"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>TypeScript</span>
-                <span class="skill-percent">92%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="92"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Angular</span>
-                <span class="skill-percent">85%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="85"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>shadcn/ui & Tailwind</span>
-                <span class="skill-percent">88%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="88"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>HTML & CSS</span>
-                <span class="skill-percent">95%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="95"></div>
-              </div>
-            </div>
           </div>
 
-          <div class="skill-category">
-            <h3>⚙️ Backend Development</h3>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>ASP.NET Core</span>
-                <span class="skill-percent">88%</span>
+          <div class="skills-content">
+            <article class="skill-category">
+              <div class="skill-card-head">
+                <span class="skill-icon">FE</span>
+                <div><span>Interface</span><h3>Frontend</h3></div>
               </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="88"></div>
+              <div class="skill-list">
+                <div class="skill-item"><div class="skill-header"><span>React & Next.js</span><span class="skill-percent">90%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>TypeScript</span><span class="skill-percent">92%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="92"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Angular</span><span class="skill-percent">85%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Tailwind & shadcn/ui</span><span class="skill-percent">88%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="88"></div></div></div>
               </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Express.js & Node.js</span>
-                <span class="skill-percent">85%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="85"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>PostgreSQL & SQL</span>
-                <span class="skill-percent">87%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="87"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Prisma & ORMs</span>
-                <span class="skill-percent">82%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="82"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>RESTful APIs</span>
-                <span class="skill-percent">85%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="85"></div>
-              </div>
-            </div>
-          </div>
+            </article>
 
-          <div class="skill-category">
-            <h3>🛠️ Tools & Other Skills</h3>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Git & GitHub</span>
-                <span class="skill-percent">95%</span>
+            <article class="skill-category">
+              <div class="skill-card-head">
+                <span class="skill-icon">BE</span>
+                <div><span>Systems</span><h3>Backend</h3></div>
               </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="95"></div>
+              <div class="skill-list">
+                <div class="skill-item"><div class="skill-header"><span>ASP.NET Core</span><span class="skill-percent">88%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="88"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Express.js & Node.js</span><span class="skill-percent">85%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>PostgreSQL & SQL</span><span class="skill-percent">87%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="87"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>RESTful APIs</span><span class="skill-percent">85%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="85"></div></div></div>
               </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Docker & Containers</span>
-                <span class="skill-percent">78%</span>
+            </article>
+
+            <article class="skill-category">
+              <div class="skill-card-head">
+                <span class="skill-icon">DX</span>
+                <div><span>Workflow</span><h3>Tools</h3></div>
               </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="78"></div>
+              <div class="skill-list">
+                <div class="skill-item"><div class="skill-header"><span>Git & GitHub</span><span class="skill-percent">95%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="95"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Docker & Containers</span><span class="skill-percent">78%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="78"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>C/C++ & Python</span><span class="skill-percent">80%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="80"></div></div></div>
+                <div class="skill-item"><div class="skill-header"><span>Algorithms & Architecture</span><span class="skill-percent">90%</span></div><div class="skill-bar"><div class="skill-progress" data-progress="90"></div></div></div>
               </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>C/C++ & Python</span>
-                <span class="skill-percent">80%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="80"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Data Structures & Algorithms</span>
-                <span class="skill-percent">90%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="90"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Networking & Security</span>
-                <span class="skill-percent">75%</span>
-              </div>
-              <div class="skill-bar">
-                <div class="skill-progress" data-progress="75"></div>
-              </div>
-            </div>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Get In Touch Section -->
-    <section id="contact" class="section contact">
-      <div class="container">
-        <span class="section-eyebrow">📬 Contact</span>
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">
-          Let's connect and build something amazing together
-        </p>
+      <section id="contact" class="section contact">
+        <div class="container">
+          <div class="contact-panel">
+            <div class="contact-copy">
+              <span class="section-index">04 / Contact</span>
+              <h2>Have an idea?<br /><span>Let’s build it well.</span></h2>
+              <p>
+                I’m open to thoughtful products, freelance collaborations, and
+                conversations about ambitious web projects.
+              </p>
+              <a href="mailto:mr.mrf.dev@gmail.com" class="button button-light">
+                Start a conversation <span aria-hidden="true">↗</span>
+              </a>
+            </div>
 
-        <div class="contact-wrapper">
-          <!-- Social Icons -->
-          <div class="contact-section">
-            <h3>Follow Me</h3>
-            <p class="contact-email-text">
-              Stay updated with my latest projects and professional journey on
-              GitHub and LinkedIn.
-            </p>
-            <div class="contact-social-links">
+            <div class="contact-links">
               <a
                 href="https://github.com/Mr-MRF-Dev"
                 target="_blank"
-                class="contact-social-icon"
-                title="GitHub"
+                rel="noopener noreferrer"
               >
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
+                <span><small>Code & open source</small><strong>GitHub</strong></span>
+                <span aria-hidden="true">↗</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/mr-mrf-dev"
                 target="_blank"
-                class="contact-social-icon"
-                title="LinkedIn"
+                rel="noopener noreferrer"
               >
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-                  />
-                </svg>
+                <span><small>Professional network</small><strong>LinkedIn</strong></span>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a href="mailto:mr.mrf.dev@gmail.com">
+                <span><small>Direct message</small><strong>Email</strong></span>
+                <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
-
-          <!-- Email Contact -->
-          <div class="contact-section">
-            <h3>Send Me an Email</h3>
-            <p class="contact-email-text">
-              Have a project in mind? Feel free to reach out and let's discuss
-              how we can work together.
-            </p>
-            <a href="mailto:mr.mrf.dev@gmail.com" class="btn btn-primary">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m22 7-10 5L2 7" />
-              </svg>
-              <span>Send Email</span>
-            </a>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container footer-container">
-        <div class="footer-social">
-          <a href="https://github.com/Mr-MRF-Dev" target="_blank" aria-label="GitHub">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/in/mr-mrf-dev" target="_blank" aria-label="LinkedIn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
-          </a>
-        </div>
-        <p>
-          &copy; <span id="currentYear"></span> Mr MRF Dev. All rights reserved.
-        </p>
-        <p class="footer-note">Made with 🍀 and lots of ☕</p>
+        <a href="#home" class="logo footer-logo">
+          <span class="logo-mark">M</span>
+          <span>Mr MRF<span class="accent">.</span>Dev</span>
+        </a>
+        <p>Designing clearly. Building carefully.</p>
+        <p>&copy; <span id="currentYear"></span> Mr MRF Dev</p>
       </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">↑</button>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">
+      ↑
+    </button>
 
     <script src="Assets/Js/script.js"></script>
   </body>
