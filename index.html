@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="</head>UTF-8" />
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -9,6 +9,25 @@
       content="Mr MRF Dev — Full Stack Developer building thoughtful, high-performance web products."
     />
     <meta name="theme-color" content="#05070a" />
+    <meta name="color-scheme" content="dark light" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mr MRF Dev — Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="Modern web products built with thoughtful interfaces and reliable backend systems."
+    />
+    <meta property="og:url" content="https://mr-mrf-dev.github.io" />
+    <meta property="og:image" content="https://mr-mrf-dev.github.io/Assets/Images/Mr-MRF-Dev.png" />
+    <link rel="canonical" href="https://mr-mrf-dev.github.io" />
+
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("theme") || "dark";
+      } catch {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
 
     <link rel="stylesheet" href="Assets/Css/normalize.css" />
     <link rel="stylesheet" href="Assets/Css/style.css" />
@@ -42,6 +61,7 @@
   </head>
 
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="page-noise" aria-hidden="true"></div>
 
     <nav class="navbar" id="navbar" aria-label="Main navigation">
@@ -56,6 +76,7 @@
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#projects" class="nav-link">Work</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#process" class="nav-link">Process</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
 
@@ -98,6 +119,8 @@
             id="menuToggle"
             type="button"
             aria-label="Toggle navigation menu"
+            aria-controls="navMenu"
+            aria-expanded="false"
           >
             <span></span><span></span><span></span>
           </button>
@@ -105,7 +128,7 @@
       </div>
     </nav>
 
-    <main>
+    <main id="main-content">
       <section id="home" class="hero">
         <div class="hero-grid" aria-hidden="true"></div>
 
@@ -241,8 +264,23 @@
             </p>
           </div>
 
-          <div class="projects-grid" id="projectsGrid">
-            <!-- Projects are loaded dynamically from GitHub -->
+          <div class="projects-grid" id="projectsGrid" aria-live="polite">
+            <div class="project-skeleton" aria-hidden="true">
+              <div class="skeleton-media"></div>
+              <div class="skeleton-body"><span></span><span></span><span></span></div>
+            </div>
+            <div class="project-skeleton" aria-hidden="true">
+              <div class="skeleton-media"></div>
+              <div class="skeleton-body"><span></span><span></span><span></span></div>
+            </div>
+            <div class="project-skeleton" aria-hidden="true">
+              <div class="skeleton-media"></div>
+              <div class="skeleton-body"><span></span><span></span><span></span></div>
+            </div>
+            <div class="project-skeleton" aria-hidden="true">
+              <div class="skeleton-media"></div>
+              <div class="skeleton-body"><span></span><span></span><span></span></div>
+            </div>
           </div>
           <div
             class="load-more-container"
@@ -309,11 +347,56 @@
         </div>
       </section>
 
+      <section id="process" class="section process" aria-labelledby="process-title">
+        <div class="container">
+          <div class="section-heading section-heading-split">
+            <div>
+              <span class="section-index">04 / Process</span>
+              <h2 class="section-title" id="process-title">How I turn ideas into products.</h2>
+            </div>
+            <p>
+              A practical workflow that keeps communication clear and the final
+              product focused on real outcomes.
+            </p>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-card">
+              <span class="process-number">01</span>
+              <div class="process-icon" aria-hidden="true">◎</div>
+              <h3>Discover</h3>
+              <p>
+                Define the problem, users, constraints, and what success should
+                look like before writing code.
+              </p>
+            </article>
+            <article class="process-card">
+              <span class="process-number">02</span>
+              <div class="process-icon" aria-hidden="true">◇</div>
+              <h3>Build</h3>
+              <p>
+                Create a maintainable solution in focused iterations with
+                thoughtful UI and reliable architecture.
+              </p>
+            </article>
+            <article class="process-card">
+              <span class="process-number">03</span>
+              <div class="process-icon" aria-hidden="true">↗</div>
+              <h3>Refine</h3>
+              <p>
+                Test, improve performance, polish interactions, and prepare the
+                product for a confident launch.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="section contact">
         <div class="container">
           <div class="contact-panel">
             <div class="contact-copy">
-              <span class="section-index">04 / Contact</span>
+              <span class="section-index">05 / Contact</span>
               <h2>Have an idea?<br /><span>Let’s build it well.</span></h2>
               <p>
                 I’m open to thoughtful products, freelance collaborations, and
