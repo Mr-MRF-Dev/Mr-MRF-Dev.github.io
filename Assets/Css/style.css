@@ -396,7 +396,7 @@ img {
 .hero {
   position: relative;
   min-height: 100svh;
-  padding: 10rem 0 6rem;
+  padding: 8.5rem 0 4rem;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -504,7 +504,7 @@ img {
   margin-bottom: 1.5rem;
   color: #f8fafc;
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(3rem, 5.6vw, 5.65rem);
+  font-size: clamp(3rem, 5vw, 4.9rem);
   font-weight: 700;
   line-height: 0.99;
   letter-spacing: -0.06em;
@@ -545,7 +545,7 @@ img {
 }
 
 .hero-stack {
-  margin-top: 2.6rem;
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
@@ -564,7 +564,7 @@ img {
 
 .hero-visual {
   position: relative;
-  width: min(100%, 440px);
+  width: min(100%, 400px);
   justify-self: end;
   animation: fadeInUp 0.75s ease 0.15s both;
 }
@@ -1500,6 +1500,50 @@ img {
 /* ================================================================
    RESPONSIVE
    ================================================================ */
+@media (min-width: 821px) and (max-height: 820px) {
+  .navbar {
+    padding: 0.55rem 0;
+  }
+
+  .hero {
+    padding: 6.75rem 0 2.5rem;
+  }
+
+  .availability {
+    margin-bottom: 1rem;
+  }
+
+  .hero-kicker {
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title {
+    margin-bottom: 1rem;
+    font-size: clamp(2.7rem, 4.5vw, 4.15rem);
+  }
+
+  .hero-description {
+    margin-bottom: 1.25rem;
+    line-height: 1.65;
+  }
+
+  .hero-stack {
+    margin-top: 1.25rem;
+  }
+
+  .hero-visual {
+    width: min(100%, 350px);
+  }
+
+  .portrait-topbar {
+    height: 42px;
+  }
+
+  .scroll-cue {
+    display: none;
+  }
+}
+
 @media (max-width: 1024px) {
   .hero-content {
     grid-template-columns: 1fr 380px;
@@ -1608,11 +1652,12 @@ img {
 
   .hero {
     min-height: auto;
-    padding: 9rem 0 6rem;
+    padding: 7.5rem 0 3.5rem;
   }
 
   .hero-content {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
   .hero-copy {
@@ -1620,9 +1665,9 @@ img {
   }
 
   .hero-visual {
-    width: min(100%, 430px);
+    width: min(100%, 320px);
     justify-self: center;
-    margin-top: 1.5rem;
+    margin-top: 0.5rem;
   }
 
   .scroll-cue {
@@ -1675,11 +1720,15 @@ img {
   }
 
   .hero {
-    padding-top: 8rem;
+    padding: 7rem 0 3rem;
   }
 
   .hero-title {
-    font-size: clamp(2.75rem, 14vw, 4rem);
+    font-size: clamp(2.6rem, 12vw, 3.5rem);
+  }
+
+  .hero-stack {
+    display: none;
   }
 
   .hero-kicker {
