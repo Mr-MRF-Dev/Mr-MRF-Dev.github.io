@@ -18,6 +18,8 @@
   --nav-bg: rgba(255, 255, 255, 0.76);
   --glow-primary: rgba(15, 159, 143, 0.18);
   --glow-secondary: rgba(22, 135, 217, 0.14);
+  --blob-blue: rgba(37, 99, 235, 0.13);
+  --blob-violet: rgba(139, 92, 246, 0.1);
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
   --shadow-md: 0 12px 30px rgba(15, 23, 42, 0.09);
   --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.14);
@@ -45,6 +47,8 @@
   --nav-bg: rgba(5, 7, 10, 0.78);
   --glow-primary: rgba(36, 199, 181, 0.13);
   --glow-secondary: rgba(56, 168, 248, 0.1);
+  --blob-blue: rgba(59, 130, 246, 0.14);
+  --blob-violet: rgba(139, 92, 246, 0.12);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
   --shadow-md: 0 16px 36px rgba(0, 0, 0, 0.32);
   --shadow-lg: 0 30px 80px rgba(0, 0, 0, 0.48);
@@ -115,8 +119,63 @@ img {
 
 .section {
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 8rem 0;
   border-top: 1px solid var(--border-color);
+}
+
+.section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.about::before,
+.projects::before,
+.projects::after,
+.skills::before,
+.contact::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: clamp(24rem, 42vw, 38rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(8px);
+}
+
+.about::before {
+  top: 50%;
+  right: -5rem;
+  background: radial-gradient(circle, var(--blob-blue) 0%, transparent 68%);
+  transform: translateY(-50%);
+}
+
+.projects::before {
+  top: 12%;
+  left: -7rem;
+  background: radial-gradient(circle, var(--blob-violet) 0%, transparent 68%);
+}
+
+.projects::after {
+  right: -8rem;
+  bottom: 4%;
+  background: radial-gradient(circle, var(--blob-blue) 0%, transparent 68%);
+}
+
+.skills::before {
+  top: 50%;
+  left: 50%;
+  background: radial-gradient(circle, var(--blob-blue) 0%, transparent 68%);
+  transform: translate(-50%, -50%);
+}
+
+.contact::before {
+  top: 50%;
+  left: -6rem;
+  background: radial-gradient(circle, var(--blob-violet) 0%, transparent 68%);
+  transform: translateY(-50%);
 }
 
 .accent {
@@ -401,17 +460,43 @@ img {
   place-items: center;
   overflow: hidden;
   color: #f8fafc;
-  background:
-    radial-gradient(circle at 18% 25%, rgba(15, 159, 143, 0.15), transparent 31rem),
-    radial-gradient(circle at 83% 63%, rgba(22, 135, 217, 0.12), transparent 32rem),
-    #06090d;
+  background: linear-gradient(180deg, #06090d 0%, #080c12 100%);
 }
 
 [data-theme="dark"] .hero {
-  background:
-    radial-gradient(circle at 18% 25%, rgba(36, 199, 181, 0.1), transparent 31rem),
-    radial-gradient(circle at 83% 63%, rgba(56, 168, 248, 0.08), transparent 32rem),
-    #030507;
+  background: linear-gradient(180deg, #020304 0%, #05080c 100%);
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: clamp(28rem, 48vw, 44rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(10px);
+}
+
+.hero::before {
+  top: 8%;
+  left: -10rem;
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.18) 0%,
+    transparent 68%
+  );
+}
+
+.hero::after {
+  right: -12rem;
+  bottom: -8%;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.14) 0%,
+    transparent 68%
+  );
 }
 
 .hero-grid {
@@ -425,29 +510,6 @@ img {
   mask-image: linear-gradient(to bottom, black, transparent 88%);
 }
 
-.hero-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(1px);
-  pointer-events: none;
-}
-
-.hero-orb-one {
-  top: 19%;
-  left: -9rem;
-  width: 20rem;
-  height: 20rem;
-  border: 1px solid rgba(36, 199, 181, 0.14);
-  box-shadow: inset 0 0 80px rgba(36, 199, 181, 0.04);
-}
-
-.hero-orb-two {
-  right: -12rem;
-  bottom: -10rem;
-  width: 34rem;
-  height: 34rem;
-  border: 1px solid rgba(56, 168, 248, 0.1);
-}
 
 .hero-content {
   position: relative;
@@ -804,10 +866,7 @@ img {
    ABOUT — BENTO LAYOUT
    ================================================================ */
 .about {
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 94% 12%, var(--glow-primary), transparent 25rem),
-    var(--bg-white);
+  background: var(--bg-white);
 }
 
 .about-bento {
@@ -880,7 +939,7 @@ img {
   flex-direction: column;
   justify-content: flex-end;
   background:
-    linear-gradient(145deg, transparent, var(--glow-primary)),
+    linear-gradient(145deg, transparent, rgba(22, 135, 217, 0.07)),
     var(--bg-elevated);
 }
 
@@ -952,9 +1011,7 @@ img {
    PROJECTS
    ================================================================ */
 .projects {
-  background:
-    radial-gradient(circle at 4% 90%, var(--glow-secondary), transparent 28rem),
-    var(--bg-light);
+  background: var(--bg-light);
 }
 
 .projects-grid {
@@ -1161,10 +1218,7 @@ img {
    SKILLS
    ================================================================ */
 .skills {
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 0, var(--glow-primary), transparent 28rem),
-    var(--bg-white);
+  background: var(--bg-white);
 }
 
 .skills-content {
@@ -1280,10 +1334,7 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-xl);
   color: #f8fafc;
-  background:
-    radial-gradient(circle at 8% 15%, rgba(36, 199, 181, 0.17), transparent 25rem),
-    radial-gradient(circle at 95% 100%, rgba(56, 168, 248, 0.14), transparent 22rem),
-    #080c11;
+  background: linear-gradient(135deg, #080c11 0%, #0c131c 100%);
   box-shadow: var(--shadow-lg);
 }
 
