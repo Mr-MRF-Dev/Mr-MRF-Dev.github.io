@@ -2,11 +2,6 @@
 const GITHUB_USERNAME = "Mr-MRF-Dev";
 const GITHUB_API_BASE = "https://api.github.com";
 
-// ===== Projects Pagination State =====
-let allRepos = [];
-let displayedProjects = 0;
-const PROJECTS_PER_PAGE = 6;
-
 // ===== Language Icon Map =====
 const LANGUAGE_EMOJIS = {
   TypeScript: "💢",
@@ -24,7 +19,11 @@ const LANGUAGE_EMOJIS = {
   PHP: "🐘",
   Swift: "🍎",
   Kotlin: "🎯",
+  "Jupyter Notebook": "📓",
 };
+
+// ===== Supported Bento Grid Sizes =====
+const PROJECT_SIZES = ["1x1", "2x1", "1x2", "2x2"];
 
 // ===== Utility: Escape HTML to prevent markup injection =====
 function escapeHTML(value) {
@@ -42,152 +41,116 @@ function createPlaceholderImage(label) {
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
-// ===== Fetch GitHub User Data =====
-async function fetchGitHubData() {
-  // Add loading state
+// ===== Fetch GitHub Profile Stats (About section counters) =====
+async function fetchProfileStats() {
   const statNumbers = document.querySelectorAll(".stat-number");
   statNumbers.forEach((stat) => stat.classList.add("loading"));
 
   try {
-    // Fetch user profile
     const userResponse = await fetch(
       `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}`,
     );
     if (!userResponse.ok) throw new Error("Failed to fetch user data");
     const userData = await userResponse.json();
 
-    // Fetch all repositories
-    const reposResponse = await fetch(
-      `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`,
-    );
-    if (!reposResponse.ok) throw new Error("Failed to fetch repos");
-    allRepos = await reposResponse.json();
-
-    // Calculate total stars across all repos
-    const totalStars = allRepos.reduce(
-      (sum, repo) => sum + repo.stargazers_count,
-      0,
-    );
-
-    // Update stats with real data
     updateStats({
       projects: userData.public_repos,
       followers: userData.followers,
     });
 
-    // Remove loading state
-    statNumbers.forEach((stat) => stat.classList.remove("loading"));
-
-    // Display initial projects
-    displayProjects();
-
-    console.log("✅ GitHub data fetched successfully!");
-    console.log(
-      `📊 Repos: ${userData.public_repos} | ⭐ Stars: ${totalStars} | 👥 Followers: ${userData.followers}`,
-    );
+    console.log("✅ GitHub profile stats fetched successfully!");
   } catch (error) {
-    console.error("❌ Error fetching GitHub data:", error);
-    // Remove loading state even on error
+    console.error("❌ Error fetching GitHub profile stats:", error);
+  } finally {
     statNumbers.forEach((stat) => stat.classList.remove("loading"));
-    // Show error message in projects grid
-    const projectsGrid = document.getElementById("projectsGrid");
-    if (projectsGrid) {
-      projectsGrid.innerHTML =
-        '<p class="projects-error">Projects could not be loaded right now. Please try again later.</p>';
-    }
   }
 }
 
-// ===== Display Projects with Pagination =====
-function displayProjects() {
+// ===== Load Curated Projects from projects.json =====
+async function loadProjects() {
   const projectsGrid = document.getElementById("projectsGrid");
-  const loadMoreContainer = document.getElementById("loadMoreContainer");
-
   if (!projectsGrid) return;
 
-  // Remove the initial loading skeletons before rendering real projects.
-  if (displayedProjects === 0) {
+  try {
+    const response = await fetch("assets/data/projects.json");
+    if (!response.ok) throw new Error("Failed to fetch projects.json");
+    const projects = await response.json();
+
     projectsGrid.replaceChildren();
-  }
 
-  // Get next batch of projects
-  const projectsToShow = allRepos.slice(
-    displayedProjects,
-    displayedProjects + PROJECTS_PER_PAGE,
-  );
+    if (!Array.isArray(projects) || projects.length === 0) {
+      projectsGrid.innerHTML =
+        '<p class="projects-error">No projects to show yet. Check back soon.</p>';
+      return;
+    }
 
-  // Create and append project cards
-  projectsToShow.forEach((repo) => {
-    const card = createProjectCard(repo);
-    projectsGrid.appendChild(card);
-  });
-
-  displayedProjects += projectsToShow.length;
-
-  // Show/hide Load More button
-  if (loadMoreContainer) {
-    loadMoreContainer.style.display =
-      displayedProjects < allRepos.length ? "flex" : "none";
+    projects.forEach((project) => {
+      projectsGrid.appendChild(createProjectCard(project));
+    });
+  } catch (error) {
+    console.error("❌ Error loading projects:", error);
+    projectsGrid.innerHTML =
+      '<p class="projects-error">Projects could not be loaded right now. Please try again later.</p>';
   }
 }
 
 // ===== Create Project Card Element =====
-function createProjectCard(repo) {
-  const emoji = LANGUAGE_EMOJIS[repo.language] || "💻";
-  const description = escapeHTML(repo.description || "A cool project");
-  const displayName = escapeHTML(repo.name.replace(/-/g, " "));
-  const homepage = repo.homepage || repo.html_url;
+function createProjectCard(project) {
+  const name = escapeHTML(project.name || "Untitled project");
+  const description = escapeHTML(project.description || "");
+  const tags = Array.isArray(project.tags) ? project.tags : [];
+  const stars = Number(project.stars) || 0;
+  const size = PROJECT_SIZES.includes(project.size) ? project.size : "1x1";
+  const emoji = project.language ? LANGUAGE_EMOJIS[project.language] || "💻" : "";
+  const hasLiveUrl = Boolean(project.liveUrl) && project.liveUrl !== project.repoUrl;
+  const imageSrc = project.image || createPlaceholderImage(project.name || "Project");
 
-  const card = document.createElement("div");
+  const card = document.createElement("article");
   card.className = "project-card";
+  card.dataset.size = size;
   card.innerHTML = `
-    <div class="project-image">
+    <div class="project-media">
       <img
-        src="https://opengraph.githubassets.com/1/${repo.full_name}"
-        alt="Preview of ${escapeHTML(repo.name)}"
+        src="${imageSrc}"
+        alt="Preview of ${name}"
         loading="lazy"
         decoding="async"
       />
-      <div class="project-overlay">
-        <h3>${emoji} ${displayName}</h3>
-        <div class="project-links">
-          <a href="${homepage}" target="_blank" rel="noopener noreferrer" class="project-btn">View Project</a>
-          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-btn">Code</a>
-        </div>
+    </div>
+    <div class="project-scrim" aria-hidden="true"></div>
+    <div class="project-top">
+      ${project.featured ? '<span class="project-featured">Featured</span>' : ""}
+      <div class="project-meta">
+        ${emoji ? `<span class="project-lang">${emoji} ${escapeHTML(project.language)}</span>` : ""}
+        ${stars > 0 ? `<span class="project-stars">⭐ ${stars}</span>` : ""}
       </div>
     </div>
-    <div class="project-info">
-      <p class="project-description">${description}</p>
-      <div class="project-tags">
-        ${repo.language ? `<span class="tag">${escapeHTML(repo.language)}</span>` : ""}
+    <div class="project-content">
+      <h3 class="project-name">${name}</h3>
+      ${description ? `<p class="project-desc">${description}</p>` : ""}
+      ${
+        tags.length > 0
+          ? `<div class="project-tags">${tags
+              .map((tag) => `<span class="tag">${escapeHTML(tag)}</span>`)
+              .join("")}</div>`
+          : ""
+      }
+      <div class="project-links">
         ${
-          repo.topics && repo.topics.length > 0
-            ? repo.topics
-                .slice(0, 2)
-                .map((topic) => `<span class="tag">${escapeHTML(topic)}</span>`)
-                .join("")
+          hasLiveUrl
+            ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-btn">Live Demo</a>`
             : ""
         }
-      </div>
-    </div>
-    <div class="project-footer">
-      <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="repo-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-        View Repo
-      </a>
-      <div class="project-stats">
-        <span class="stat-item">⭐ ${repo.stargazers_count}</span>
+        <a href="${project.repoUrl}" target="_blank" rel="noopener noreferrer" class="project-btn">${hasLiveUrl ? "Code" : "View Code"}</a>
       </div>
     </div>
   `;
 
-  const previewImage = card.querySelector(".project-image img");
+  const previewImage = card.querySelector(".project-media img");
   previewImage.addEventListener(
     "error",
     () => {
-      previewImage.src = createPlaceholderImage(repo.name);
+      previewImage.src = createPlaceholderImage(project.name || "Project");
     },
     { once: true },
   );
@@ -298,8 +261,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set current year in footer
   document.getElementById("currentYear").textContent = new Date().getFullYear();
 
-  // Fetch GitHub data on page load
-  fetchGitHubData();
+  // Load live profile stats and curated projects
+  fetchProfileStats();
+  loadProjects();
   setTimeout(typeEffect, 1000);
 });
 
@@ -463,10 +427,3 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// ===== Load More Projects Button =====
-const loadMoreBtn = document.getElementById("loadMoreBtn");
-if (loadMoreBtn) {
-  loadMoreBtn.addEventListener("click", () => {
-    displayProjects();
-  });
-}

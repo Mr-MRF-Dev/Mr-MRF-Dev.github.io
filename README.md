@@ -12,12 +12,12 @@ A modern, responsive portfolio website showcasing my skills, projects, and devel
 ## ✨ Features
 
 - **📱 Fully Responsive**: Optimized for all devices (mobile, tablet, desktop)
-- **🌓 Theme Toggle**: Dark/light mode with localStorage persistence
-- **🔄 GitHub Integration**: Auto-fetches repositories and profile stats via GitHub API
-- **📄 Dynamic Projects**: Loading skeletons and pagination showing 6 projects at a time
+- **🌓 Theme Toggle**: Dark mode by default, with a persistent light mode override
+- **🔄 GitHub Integration**: Live profile stats (projects, followers) via the GitHub API
+- **🧩 Curated Projects**: A customizable bento grid driven by `assets/data/projects.json` — no code changes needed to add, edit, resize, or reorder project cards
 - **🎨 Modern UI**: Dark-first editorial design with bento layouts and ambient gradients
 - **⚡ Fast & Lightweight**: Pure vanilla JavaScript, no frameworks or build step
-- **🎯 SEO Optimized**: Semantic HTML, canonical URL, and Open Graph metadata
+- **🎯 SEO Optimized**: Semantic HTML, canonical URL, Open Graph/Twitter Card metadata, and JSON-LD
 - **♿ Accessible**: Skip navigation, reduced-motion support, and accessible menu states
 
 ## 🛠️ Tech Stack
@@ -25,7 +25,7 @@ A modern, responsive portfolio website showcasing my skills, projects, and devel
 - **HTML5**: Semantic markup
 - **CSS3**: Custom properties, Flexbox, Grid, animations
 - **JavaScript (ES6+)**: Vanilla JS with modern APIs
-- **GitHub API**: Dynamic data fetching
+- **GitHub API**: Live profile stats (followers, public repo count)
 - **Google Fonts**: Manrope and Space Grotesk font families
 
 ## 📂 Project Structure
@@ -41,6 +41,9 @@ A modern, responsive portfolio website showcasing my skills, projects, and devel
 │   │   └── style.css       # Main stylesheet
 │   ├── js/
 │   │   └── script.js       # Main JavaScript
+│   ├── data/
+│   │   ├── projects.json   # Curated project data (see assets/data/README.md)
+│   │   └── README.md       # Schema docs for projects.json
 │   ├── images/              # Profile images
 │   └── favicon/             # Favicon files
 ├── LICENSE
@@ -51,7 +54,7 @@ A modern, responsive portfolio website showcasing my skills, projects, and devel
 
 1. **Hero**: Editorial introduction with typing animation and clear calls to action
 2. **About**: Bento-grid background with live GitHub stats (Projects, Followers)
-3. **Projects**: Dynamically loaded repositories with skeleton states and pagination
+3. **Projects**: A curated, customizable bento grid (see `assets/data/projects.json`), with a link out to the full [GitHub Stars list](https://github.com/stars/Mr-MRF-Dev/lists/my-projects)
 4. **Skills**: Technical proficiencies across Frontend, Backend, and Tools
 5. **Process**: Discover, Build, and Refine workflow
 6. **Contact**: Collaboration call to action with social and email links
@@ -61,8 +64,8 @@ A modern, responsive portfolio website showcasing my skills, projects, and devel
 
 - Intersection Observer for scroll and skill animations
 - Lazy-loaded, asynchronously decoded project images
-- Loading skeletons while GitHub data is fetched
-- Theme initialization before rendering to prevent color flashing
+- Loading skeletons while project and stats data is fetched
+- Dark mode by default, rendered before first paint to prevent color flashing
 - Minimal dependencies and no build step
 
 ## 🤝 Contributing
