@@ -2,156 +2,207 @@
   {
     "name": "SmartClass",
     "description": "A web dashboard for monitoring and managing classroom embedded systems in real time.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/SmartClass-Embedded-System-Project",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/SmartClass-Embedded-System-Project",
     "language": "TypeScript",
     "stars": 1,
-    "tags": ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Bun"],
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Bun"
+    ],
     "size": "2x2",
     "featured": true
   },
   {
     "name": "SmartCaf",
     "description": "A conceptual smart cafeteria system designed for a Software Engineering course.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/SmartCaf-Software-Engineering-I-Project",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/SmartCaf-Software-Engineering-I-Project",
     "language": "TypeScript",
     "stars": 3,
-    "tags": ["Next.js", "shadcn/ui", "Software Design"],
-    "size": "2x1",
+    "tags": [
+      "Next.js",
+      "shadcn/ui",
+      "Software Design"
+    ],
+    "size": "1x2",
     "featured": true
   },
   {
     "name": "Airline Data Warehouse",
     "description": "An integrated data warehouse and BI platform for aviation analytics and interactive reporting.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/Airline-Data-Warehouse",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Airline-Data-Warehouse",
     "language": "TSQL",
     "stars": 2,
-    "tags": ["SQL Server", "SSIS", "SSAS", "Power BI"],
-    "size": "2x1",
+    "tags": [
+      "SQL Server",
+      "SSIS",
+      "SSAS",
+      "Power BI"
+    ],
+    "size": "1x1",
     "featured": true
   },
   {
     "name": "LC3 Simulator",
     "description": "An assembler and hardware simulator for the LC-3 computer architecture.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/LC3-Simulator",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/LC3-Simulator",
     "language": "C++",
     "stars": 1,
-    "tags": ["C++", "Qt6", "Assembler", "Simulation"],
-    "size": "1x2",
+    "tags": [
+      "C++",
+      "Qt6",
+      "Assembler",
+      "Simulation"
+    ],
+    "size": "2x1",
     "featured": false
   },
   {
     "name": "NetLab Archive",
     "description": "Network lab projects and exam resources built in Cisco Packet Tracer.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/NetLab-Archive",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/NetLab-Archive",
     "language": "",
     "stars": 6,
-    "tags": ["Cisco Packet Tracer", "Networking"],
-    "size": "1x1",
+    "tags": [
+      "Cisco Packet Tracer",
+      "Networking"
+    ],
+    "size": "2x1",
     "featured": false
   },
   {
     "name": "MBTI Text Classifier",
     "description": "A machine learning model that classifies text into one of the 16 MBTI personality types.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/MBTI-Text-Classifier",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/MBTI-Text-Classifier",
     "language": "Jupyter Notebook",
     "stars": 1,
-    "tags": ["Python", "Machine Learning", "NLP"],
-    "size": "1x1",
+    "tags": [
+      "Python",
+      "Machine Learning",
+      "NLP"
+    ],
+    "size": "1x2",
     "featured": false
   },
   {
     "name": "Angry Task",
     "description": "A simple and modern Angular to-do app.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/Angry-Task",
+    "image": "",
     "liveUrl": "https://mr-mrf-dev.github.io/Angry-Task/",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Angry-Task",
     "language": "TypeScript",
     "stars": 5,
-    "tags": ["Angular", "PrimeNG", "Tailwind CSS"],
+    "tags": [
+      "Angular",
+      "PrimeNG",
+      "Tailwind CSS"
+    ],
     "size": "1x1",
     "featured": false
   },
   {
     "name": "Simple Profile Card",
     "description": "A single-page website template for showcasing your profile and links.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/Simple-Profile-Card",
+    "image": "",
     "liveUrl": "https://mr-mrf-dev.github.io/Simple-Profile-Card/",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Simple-Profile-Card",
     "language": "CSS",
     "stars": 1,
-    "tags": ["HTML", "CSS", "JavaScript"],
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
     "size": "1x1",
     "featured": false
   },
   {
     "name": "Chillify",
     "description": "A simple music player database schema, designed as a team database project.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/Chillify-DataBase-Project",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Chillify-DataBase-Project",
     "language": "TSQL",
     "stars": 1,
-    "tags": ["SQL Server", "Database Design"],
+    "tags": [
+      "SQL Server",
+      "Database Design"
+    ],
     "size": "1x1",
     "featured": false
   },
   {
     "name": "Py Screen Saver",
     "description": "A simple screen saver application built with Python and Tkinter.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/Py-Screen-Saver",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Py-Screen-Saver",
     "language": "Python",
     "stars": 2,
-    "tags": ["Python", "Tkinter"],
-    "size": "1x1",
+    "tags": [
+      "Python",
+      "Tkinter"
+    ],
+    "size": "1x2",
     "featured": false
   },
   {
     "name": "Doctors Building",
     "description": "A fundamentals-of-programming terminal app built in C.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/Doctors-Building",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Doctors-Building",
     "language": "C",
     "stars": 3,
-    "tags": ["C", "Terminal App"],
-    "size": "1x1",
+    "tags": [
+      "C",
+      "Terminal App"
+    ],
+    "size": "2x2",
     "featured": false
   },
   {
     "name": "Mr. Minesweeper",
     "description": "A terminal-based Minesweeper game written in C.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/Mr-Minesweeper",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Mr-Minesweeper",
     "language": "C",
     "stars": 3,
-    "tags": ["C", "Terminal Game"],
+    "tags": [
+      "C",
+      "Terminal Game"
+    ],
     "size": "1x1",
     "featured": false
   },
   {
     "name": "Pizza Finder",
     "description": "A data structures project using a KD-tree to find the nearest pizza place.",
-    "image": "https://opengraph.githubassets.com/1/Mr-MRF-Dev/Pizza-Finder",
+    "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Pizza-Finder",
     "language": "C++",
     "stars": 1,
-    "tags": ["C++", "KD-Tree", "Data Structures"],
+    "tags": [
+      "C++",
+      "KD-Tree",
+      "Data Structures"
+    ],
     "size": "1x1",
     "featured": false
   }
