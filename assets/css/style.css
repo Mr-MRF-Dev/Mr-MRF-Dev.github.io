@@ -278,6 +278,11 @@ img {
   font-size: 0.9rem;
   font-weight: 800;
   box-shadow: 0 0 24px rgba(36, 199, 181, 0.22);
+  transition: transform var(--transition);
+}
+
+.logo:hover .logo-mark {
+  transform: scale(1.1) rotate(-6deg);
 }
 
 .nav-menu {
@@ -673,6 +678,16 @@ img {
   transform: rotate(0) translateY(-5px);
 }
 
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .portrait-topbar {
   height: 48px;
   padding: 0 1rem;
@@ -768,11 +783,13 @@ img {
 .floating-card-code {
   top: 19%;
   left: -3rem;
+  animation: float 6s ease-in-out infinite;
 }
 
 .floating-card-status {
   right: -2rem;
   bottom: 13%;
+  animation: float 6s ease-in-out infinite -3s;
 }
 
 .floating-icon {
@@ -794,6 +811,7 @@ img {
   border: 3px solid rgba(74, 222, 128, 0.2);
   border-radius: 50%;
   background: #4ade80;
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .floating-card strong,
@@ -1126,7 +1144,7 @@ img {
 .project-card:hover {
   border-color: var(--border-strong);
   box-shadow: var(--shadow-lg);
-  transform: translateY(-7px);
+  transform: translateY(-7px) scale(1.015);
 }
 
 .project-image {
@@ -1353,6 +1371,11 @@ img {
   font-family: "Space Grotesk", sans-serif;
   font-size: 0.72rem;
   font-weight: 800;
+  transition: transform var(--transition);
+}
+
+.skill-category:hover .skill-icon {
+  transform: scale(1.1) rotate(-4deg);
 }
 
 .skill-card-head div > span {
@@ -1461,6 +1484,11 @@ img {
   color: var(--secondary-color);
   background: var(--bg-soft);
   font-size: 1.2rem;
+  transition: transform var(--transition);
+}
+
+.process-card:hover .process-icon {
+  transform: scale(1.1) rotate(4deg);
 }
 
 .process-card h3 {

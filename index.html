@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -41,10 +41,11 @@
 
     <script>
       try {
-        document.documentElement.dataset.theme =
-          localStorage.getItem("theme") || "dark";
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.dataset.theme = "light";
+        }
       } catch {
-        document.documentElement.dataset.theme = "dark";
+        // Dark mode remains the default when storage is unavailable.
       }
     </script>
 
