@@ -543,7 +543,6 @@ img {
   mask-image: linear-gradient(to bottom, black, transparent 88%);
 }
 
-
 .hero-content {
   position: relative;
   z-index: 2;
@@ -1298,7 +1297,9 @@ img {
   font-size: 1.15rem;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.5);
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .project-desc {
@@ -1340,7 +1341,9 @@ img {
   font-family: "Space Grotesk", sans-serif;
   font-size: 0.65rem;
   font-weight: 600;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .project-tags .tag:hover {
@@ -1383,7 +1386,9 @@ img {
   font-size: 0.72rem;
   font-weight: 800;
   text-decoration: none;
-  transition: var(--transition), transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition:
+    var(--transition),
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .project-btn:hover {
@@ -1517,7 +1522,11 @@ img {
   width: 0;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   box-shadow: 0 0 12px rgba(36, 199, 181, 0.22);
   transition: width 1.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }

@@ -125,8 +125,10 @@ function createProjectCard(project) {
   const tags = Array.isArray(project.tags) ? project.tags : [];
   const stars = Number(project.stars) || 0;
   const size = PROJECT_SIZES.includes(project.size) ? project.size : "1x1";
-  const hasLiveUrl = Boolean(project.liveUrl) && project.liveUrl !== project.repoUrl;
-  const imageSrc = project.image || createPlaceholderImage(project.name || "Project");
+  const hasLiveUrl =
+    Boolean(project.liveUrl) && project.liveUrl !== project.repoUrl;
+  const imageSrc =
+    project.image || createPlaceholderImage(project.name || "Project");
 
   const card = document.createElement("article");
   card.className = "project-card";
@@ -449,4 +451,3 @@ document.addEventListener("keydown", (e) => {
     }, 5000);
   }
 });
-
