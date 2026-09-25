@@ -2,26 +2,6 @@
 const GITHUB_USERNAME = "Mr-MRF-Dev";
 const GITHUB_API_BASE = "https://api.github.com";
 
-// ===== Language Icon Map =====
-const LANGUAGE_EMOJIS = {
-  TypeScript: "💢",
-  JavaScript: "📜",
-  "C++": "🖥️",
-  C: "🧨",
-  Python: "🐍",
-  HTML: "📇",
-  CSS: "🎨",
-  TSQL: "🧮",
-  Java: "☕",
-  Rust: "🦀",
-  Go: "🐹",
-  Ruby: "💎",
-  PHP: "🐘",
-  Swift: "🍎",
-  Kotlin: "🎯",
-  "Jupyter Notebook": "📓",
-};
-
 // ===== Supported Bento Grid Sizes =====
 const PROJECT_SIZES = ["1x1", "2x1", "1x2", "2x2"];
 
@@ -35,9 +15,53 @@ function escapeHTML(value) {
     .replace(/'/g, "&#39;");
 }
 
-// ===== Fallback Preview Image (no external dependency) =====
+// ===== Cover Palette for Generated Project Covers =====
+const COVER_GRADIENTS = [
+  ["#0f172a", "#0f9f8f"],
+  ["#111827", "#1687d9"],
+  ["#0b1220", "#7c3aed"],
+  ["#12131a", "#ec4899"],
+  ["#0c1a1a", "#22c55e"],
+  ["#151312", "#f59e0b"],
+];
+
+// ===== Utility: Deterministic Hash (for stable, varied cover colors) =====
+function hashString(value) {
+  let hash = 0;
+  for (let i = 0; i < value.length; i++) {
+    hash = (hash << 5) - hash + value.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
+// ===== Utility: Initials for the Generated Cover (e.g. "SmartClass" -> "SC") =====
+function getInitials(name) {
+  const words = String(name).trim().split(/\s+/).filter(Boolean);
+  if (words.length === 0) return "?";
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return (words[0][0] + words[1][0]).toUpperCase();
+}
+
+// ===== Generated Project Cover (used when no real screenshot is provided) =====
+// Avoids relying on GitHub's auto-generated preview images, which already bake
+// in their own text and clash with this card's title/description overlay.
 function createPlaceholderImage(label) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250"><rect width="400" height="250" fill="#0d1219"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#8e9aaa" font-family="sans-serif" font-size="20">${escapeHTML(label)}</text></svg>`;
+  const [from, to] =
+    COVER_GRADIENTS[hashString(label) % COVER_GRADIENTS.length];
+  const initials = escapeHTML(getInitials(label));
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="${from}"/>
+        <stop offset="100%" stop-color="${to}"/>
+      </linearGradient>
+    </defs>
+    <rect width="800" height="600" fill="url(#g)"/>
+    <circle cx="660" cy="110" r="190" fill="#ffffff" opacity="0.07"/>
+    <circle cx="110" cy="520" r="150" fill="#ffffff" opacity="0.06"/>
+    <text x="50%" y="54%" font-family="Space Grotesk, sans-serif" font-size="180" font-weight="700" fill="#ffffff" fill-opacity="0.9" text-anchor="middle" dominant-baseline="middle">${initials}</text>
+  </svg>`;
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
@@ -101,7 +125,6 @@ function createProjectCard(project) {
   const tags = Array.isArray(project.tags) ? project.tags : [];
   const stars = Number(project.stars) || 0;
   const size = PROJECT_SIZES.includes(project.size) ? project.size : "1x1";
-  const emoji = project.language ? LANGUAGE_EMOJIS[project.language] || "💻" : "";
   const hasLiveUrl = Boolean(project.liveUrl) && project.liveUrl !== project.repoUrl;
   const imageSrc = project.image || createPlaceholderImage(project.name || "Project");
 
@@ -121,7 +144,7 @@ function createProjectCard(project) {
     <div class="project-top">
       ${project.featured ? '<span class="project-featured">Featured</span>' : ""}
       <div class="project-meta">
-        ${emoji ? `<span class="project-lang">${emoji} ${escapeHTML(project.language)}</span>` : ""}
+        ${project.language ? `<span class="project-lang">${escapeHTML(project.language)}</span>` : ""}
         ${stars > 0 ? `<span class="project-stars">⭐ ${stars}</span>` : ""}
       </div>
     </div>
