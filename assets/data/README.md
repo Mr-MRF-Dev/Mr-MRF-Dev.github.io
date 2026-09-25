@@ -5,17 +5,17 @@
 ## Fields
 
 | Field         | Type    | Required | Notes                                                                 |
-| ------------- | ------- | -------- | ---------------------------------------------------------------------- |
-| `name`        | string  | yes      | Card title.                                                            |
-| `description` | string  | yes      | Short blurb. Gets clamped to a few lines on smaller cards.             |
-| `image`       | string  | yes      | Preview image URL. Use a real screenshot for the best look.            |
-| `liveUrl`     | string  | no       | Link to a live demo. Leave `""` if there isn't one.                    |
-| `repoUrl`     | string  | yes      | Link to the source code.                                               |
+| ------------- | ------- | -------- | --------------------------------------------------------------------- |
+| `name`        | string  | yes      | Card title.                                                           |
+| `description` | string  | yes      | Short blurb. Gets clamped to a few lines on smaller cards.            |
+| `image`       | string  | yes      | Preview image URL. Use a real screenshot for the best look.           |
+| `liveUrl`     | string  | no       | Link to a live demo. Leave `""` if there isn't one.                   |
+| `repoUrl`     | string  | yes      | Link to the source code.                                              |
 | `language`    | string  | no       | Used to pick an emoji badge (see `LANGUAGE_EMOJIS` in `assets/js/script.js`). Leave `""` if not applicable. |
-| `stars`       | number  | no       | Shown as a ⭐ badge. Defaults to `0` if omitted.                        |
-| `tags`        | array   | no       | Short tech-stack labels shown as pills.                                |
-| `size`        | string  | no       | Grid size: `"1x1"`, `"2x1"`, `"1x2"`, or `"2x2"`. Defaults to `"1x1"`. |
-| `featured`    | boolean | no       | Shows a small "Featured" badge on the card.                            |
+| `stars`       | number  | no       | Shown as a ⭐ badge. Defaults to `0` if omitted.                      |
+| `tags`        | array   | no       | Short tech-stack labels shown as pills.                               |
+| `size`        | string  | no       | Grid size: `"1x1"`, `"2x1"`, `"1x2"`, or `"2x2"`. Defaults to `"1x1"`.|
+| `featured`    | boolean | no       | Shows a small "Featured" badge on the card.                           |
 
 ## Sizing the grid
 
