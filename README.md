@@ -33,14 +33,16 @@ A modern, responsive portfolio website showcasing my skills, projects, and devel
 ```txt
 .
 ├── index.html              # Main HTML file
-├── Assets/
-│   ├── Css/
+├── robots.txt              # Search engine crawl rules
+├── sitemap.xml             # Search engine sitemap
+├── assets/
+│   ├── css/
 │   │   ├── normalize.css   # CSS reset
 │   │   └── style.css       # Main stylesheet
-│   ├── Js/
+│   ├── js/
 │   │   └── script.js       # Main JavaScript
-│   ├── Images/             # Profile images
-│   └── Favicon/            # Favicon files
+│   ├── images/              # Profile images
+│   └── favicon/             # Favicon files
 ├── LICENSE
 └── README.md
 ```

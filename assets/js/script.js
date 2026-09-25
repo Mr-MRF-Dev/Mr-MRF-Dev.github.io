@@ -7,6 +7,41 @@ let allRepos = [];
 let displayedProjects = 0;
 const PROJECTS_PER_PAGE = 6;
 
+// ===== Language Icon Map =====
+const LANGUAGE_EMOJIS = {
+  TypeScript: "💢",
+  JavaScript: "📜",
+  "C++": "🖥️",
+  C: "🧨",
+  Python: "🐍",
+  HTML: "📇",
+  CSS: "🎨",
+  TSQL: "🧮",
+  Java: "☕",
+  Rust: "🦀",
+  Go: "🐹",
+  Ruby: "💎",
+  PHP: "🐘",
+  Swift: "🍎",
+  Kotlin: "🎯",
+};
+
+// ===== Utility: Escape HTML to prevent markup injection =====
+function escapeHTML(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// ===== Fallback Preview Image (no external dependency) =====
+function createPlaceholderImage(label) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250"><rect width="400" height="250" fill="#0d1219"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#8e9aaa" font-family="sans-serif" font-size="20">${escapeHTML(label)}</text></svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
 // ===== Fetch GitHub User Data =====
 async function fetchGitHubData() {
   // Add loading state
@@ -98,26 +133,9 @@ function displayProjects() {
 
 // ===== Create Project Card Element =====
 function createProjectCard(repo) {
-  const languageEmojis = {
-    TypeScript: "💢",
-    JavaScript: "📜",
-    "C++": "🖥️",
-    C: "🧨",
-    Python: "🐍",
-    HTML: "📇",
-    CSS: "🎨",
-    TSQL: "🧮",
-    Java: "☕",
-    Rust: "🦀",
-    Go: "🐹",
-    Ruby: "💎",
-    PHP: "🐘",
-    Swift: "🍎",
-    Kotlin: "🎯",
-  };
-
-  const emoji = languageEmojis[repo.language] || "💻";
-  const description = repo.description || "A cool project";
+  const emoji = LANGUAGE_EMOJIS[repo.language] || "💻";
+  const description = escapeHTML(repo.description || "A cool project");
+  const displayName = escapeHTML(repo.name.replace(/-/g, " "));
   const homepage = repo.homepage || repo.html_url;
 
   const card = document.createElement("div");
@@ -126,13 +144,12 @@ function createProjectCard(repo) {
     <div class="project-image">
       <img
         src="https://opengraph.githubassets.com/1/${repo.full_name}"
-        alt="Preview of ${repo.name}"
+        alt="Preview of ${escapeHTML(repo.name)}"
         loading="lazy"
         decoding="async"
-        onerror="this.src='https://via.placeholder.com/400x250?text=${encodeURIComponent(repo.name)}'"
       />
       <div class="project-overlay">
-        <h3>${emoji} ${repo.name.replace(/-/g, " ")}</h3>
+        <h3>${emoji} ${displayName}</h3>
         <div class="project-links">
           <a href="${homepage}" target="_blank" rel="noopener noreferrer" class="project-btn">View Project</a>
           <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-btn">Code</a>
@@ -142,12 +159,12 @@ function createProjectCard(repo) {
     <div class="project-info">
       <p class="project-description">${description}</p>
       <div class="project-tags">
-        ${repo.language ? `<span class="tag">${repo.language}</span>` : ""}
+        ${repo.language ? `<span class="tag">${escapeHTML(repo.language)}</span>` : ""}
         ${
           repo.topics && repo.topics.length > 0
             ? repo.topics
                 .slice(0, 2)
-                .map((topic) => `<span class="tag">${topic}</span>`)
+                .map((topic) => `<span class="tag">${escapeHTML(topic)}</span>`)
                 .join("")
             : ""
         }
@@ -166,7 +183,40 @@ function createProjectCard(repo) {
     </div>
   `;
 
+  const previewImage = card.querySelector(".project-image img");
+  previewImage.addEventListener(
+    "error",
+    () => {
+      previewImage.src = createPlaceholderImage(repo.name);
+    },
+    { once: true },
+  );
+
+  attachCardTiltEffect(card);
+
   return card;
+}
+
+// ===== Project Card Tilt Effect =====
+function attachCardTiltEffect(card) {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform =
+      "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
+  });
 }
 
 // ===== Update Stats Numbers =====
@@ -174,9 +224,6 @@ function updateStats(data) {
   const statItems = document.querySelectorAll(".stat-number");
   statItems[0].setAttribute("data-target", data.projects);
   statItems[1].setAttribute("data-target", data.followers);
-
-  // Mark stats as animated
-  statsAnimated = true;
 
   // Animate counters with new values
   statItems.forEach((stat) => {
@@ -213,8 +260,8 @@ syncThemeUI(currentTheme);
 
 // Toggle theme
 themeToggle.addEventListener("click", () => {
-  const currentTheme = htmlElement.getAttribute("data-theme");
-  const newTheme = currentTheme === "light" ? "dark" : "light";
+  const activeTheme = htmlElement.getAttribute("data-theme");
+  const newTheme = activeTheme === "light" ? "dark" : "light";
 
   syncThemeUI(newTheme);
   try {
@@ -299,15 +346,37 @@ document.querySelectorAll(".nav-link").forEach((link) => {
   });
 });
 
-// ===== Navbar Scroll Effect =====
+// ===== Combined Scroll Effects (navbar, back-to-top, active link) =====
 const navbar = document.getElementById("navbar");
+const backToTopButton = document.getElementById("backToTop");
+const sections = document.querySelectorAll(".section, .hero");
+const navLinks = document.querySelectorAll(".nav-link");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
+function handleScrollEffects() {
+  const scrollY = window.scrollY;
+
+  navbar.classList.toggle("scrolled", scrollY > 50);
+  backToTopButton.classList.toggle("show", scrollY > 300);
+
+  let current = "";
+  sections.forEach((section) => {
+    if (scrollY >= section.offsetTop - 100) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.toggle(
+      "active",
+      link.getAttribute("href") === `#${current}`,
+    );
+  });
+}
+
+window.addEventListener("scroll", handleScrollEffects);
+
+backToTopButton.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 // ===== Smooth Scrolling for Navigation Links =====
@@ -342,8 +411,6 @@ function animateCounter(element, target, duration = 2000) {
 }
 
 // ===== Intersection Observer for Animations =====
-let statsAnimated = false; // Track if stats have been animated
-
 const observerOptions = {
   threshold: 0.05,
   rootMargin: "0px 0px 0px 0px",
@@ -354,13 +421,6 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = "1";
       entry.target.style.transform = "translateY(0)";
-
-      // Don't animate counters here - let the GitHub fetch do it
-      // This prevents double animation
-      if (entry.target.classList.contains("about") && !statsAnimated) {
-        // Mark as ready to animate when data is fetched
-        entry.target.setAttribute("data-ready", "true");
-      }
 
       // Animate skill bars when skills section is visible
       if (entry.target.classList.contains("skills")) {
@@ -383,129 +443,6 @@ document.querySelectorAll(".section").forEach((section) => {
   section.style.transform = "translateY(30px)";
   section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
   observer.observe(section);
-});
-
-// ===== Back to Top Button =====
-const backToTopButton = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTopButton.classList.add("show");
-  } else {
-    backToTopButton.classList.remove("show");
-  }
-});
-
-backToTopButton.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-});
-
-// ===== Active Navigation Link Highlighting =====
-const sections = document.querySelectorAll(".section, .hero");
-const navLinks = document.querySelectorAll(".nav-link");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (window.scrollY >= sectionTop - 100) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active");
-    }
-  });
-});
-
-// ===== Project Card Tilt Effect =====
-document.querySelectorAll(".project-card").forEach((card) => {
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = (y - centerY) / 10;
-    const rotateY = (centerX - x) / 10;
-
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-  });
-
-  card.addEventListener("mouseleave", () => {
-    card.style.transform =
-      "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
-  });
-});
-
-// ===== Cursor Trail Effect (Optional) =====
-const createCursorTrail = () => {
-  const coords = { x: 0, y: 0 };
-  const circles = document.querySelectorAll(".cursor-circle");
-
-  if (circles.length === 0) return; // Only run if cursor circles exist
-
-  circles.forEach((circle, index) => {
-    circle.x = 0;
-    circle.y = 0;
-  });
-
-  window.addEventListener("mousemove", (e) => {
-    coords.x = e.clientX;
-    coords.y = e.clientY;
-  });
-
-  function animateCircles() {
-    let x = coords.x;
-    let y = coords.y;
-
-    circles.forEach((circle, index) => {
-      circle.style.left = x - 12 + "px";
-      circle.style.top = y - 12 + "px";
-      circle.style.transform = `scale(${
-        (circles.length - index) / circles.length
-      })`;
-
-      circle.x = x;
-      circle.y = y;
-
-      const nextCircle = circles[index + 1] || circles[0];
-      x += (nextCircle.x - x) * 0.3;
-      y += (nextCircle.y - y) * 0.3;
-    });
-
-    requestAnimationFrame(animateCircles);
-  }
-
-  animateCircles();
-};
-
-// ===== Form Input Animation =====
-document
-  .querySelectorAll(".form-group input, .form-group textarea")
-  .forEach((input) => {
-    input.addEventListener("focus", function () {
-      this.parentElement.style.transform = "translateY(-2px)";
-    });
-
-    input.addEventListener("blur", function () {
-      this.parentElement.style.transform = "translateY(0)";
-    });
-  });
-
-// ===== Loading Animation (Optional) =====
-window.addEventListener("load", () => {
-  document.body.classList.add("loaded");
 });
 
 // ===== Console Message =====
