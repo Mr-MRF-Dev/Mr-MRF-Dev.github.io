@@ -1,121 +1,228 @@
 [
   {
-    "name": "SmartClass",
-    "description": "A web dashboard for monitoring and managing classroom embedded systems in real time.",
+    "name": "RL on Embedded Systems",
+    "description": "🏫 Implementation and evaluation of Reinforcement Learning algorithms on embedded systems, focusing on performance, resource constraints, and real-time interaction.",
     "image": "",
     "liveUrl": "",
-    "repoUrl": "https://github.com/Mr-MRF-Dev/SmartClass-Embedded-System-Project",
-    "language": "TypeScript",
-    "stars": 1,
-    "tags": ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Bun"],
+    "repoUrl": "https://github.com/Mr-MRF-Dev/RL-on-Embedded-Systems",
+    "language": "Python",
+    "stars": 0,
+    "tags": [
+      "Python",
+      "C++",
+      "C",
+      "RL",
+      "Embedded Systems"
+    ],
     "size": "2x2",
     "featured": true
   },
   {
     "name": "SmartCaf",
-    "description": "A conceptual smart cafeteria system designed for a Software Engineering course.",
-    "image": "",
+    "description": "🍽 SmartCaf is a conceptual software engineering (I) project focused on designing a smart cafeteria system, without any implementation.",
+    "image": "https://github.com/Mr-MRF-Dev/SmartCaf-Software-Engineering-I-Project/blob/master/images/student-panel.png?raw=true",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/SmartCaf-Software-Engineering-I-Project",
     "language": "TypeScript",
-    "stars": 3,
-    "tags": ["Next.js", "shadcn/ui", "Software Design"],
-    "size": "1x2",
+    "stars": 0,
+    "tags": [
+      "Next.js",
+      "shadcn/ui",
+      "Software Design"
+    ],
+    "size": "2x1",
     "featured": true
   },
   {
-    "name": "Airline Data Warehouse",
-    "description": "An integrated data warehouse and BI platform for aviation analytics and interactive reporting.",
-    "image": "",
+    "name": "Mr Minesweeper",
+    "description": "🧨 A terminal-based Minesweeper game written in C.",
+    "image": "https://github.com/Mr-MRF-Dev/Mr-Minesweeper/blob/master/images/screenshot.png?raw=true",
     "liveUrl": "",
-    "repoUrl": "https://github.com/Mr-MRF-Dev/Airline-Data-Warehouse",
-    "language": "TSQL",
-    "stars": 2,
-    "tags": ["SQL Server", "SSIS", "SSAS", "Power BI"],
+    "repoUrl": "https://github.com/Mr-MRF-Dev/Mr-Minesweeper",
+    "language": "C",
+    "stars": 0,
+    "tags": [
+      "C",
+      "Terminal Game"
+    ],
     "size": "1x1",
-    "featured": true
-  },
-  {
-    "name": "LC3 Simulator",
-    "description": "An assembler and hardware simulator for the LC-3 computer architecture.",
-    "image": "",
-    "liveUrl": "",
-    "repoUrl": "https://github.com/Mr-MRF-Dev/LC3-Simulator",
-    "language": "C++",
-    "stars": 1,
-    "tags": ["C++", "Qt6", "Assembler", "Simulation"],
-    "size": "2x1",
-    "featured": false
-  },
-  {
-    "name": "NetLab Archive",
-    "description": "Network lab projects and exam resources built in Cisco Packet Tracer.",
-    "image": "",
-    "liveUrl": "",
-    "repoUrl": "https://github.com/Mr-MRF-Dev/NetLab-Archive",
-    "language": "",
-    "stars": 6,
-    "tags": ["Cisco Packet Tracer", "Networking"],
-    "size": "2x1",
     "featured": false
   },
   {
     "name": "MBTI Text Classifier",
-    "description": "A machine learning model that classifies text into one of the 16 MBTI personality types.",
+    "description": "👥 A machine learning project that classifies text into one of the 16 MBTI personality types based on user posts.",
     "image": "",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/MBTI-Text-Classifier",
     "language": "Jupyter Notebook",
-    "stars": 1,
-    "tags": ["Python", "Machine Learning", "NLP"],
+    "stars": 0,
+    "tags": [
+      "Python",
+      "Machine Learning",
+      "NLP"
+    ],
+    "size": "1x2",
+    "featured": true
+  },
+  {
+    "name": "LC3 Simulator",
+    "description": "🖥️ An assembler and hardware simulator for the LC-3 computer architecture.",
+    "image": "",
+    "liveUrl": "",
+    "repoUrl": "https://github.com/Mr-MRF-Dev/LC3-Simulator",
+    "language": "C++",
+    "stars": 0,
+    "tags": [
+      "C++",
+      "Qt6",
+      "Assembler",
+      "Simulation"
+    ],
+    "size": "1x1",
+    "featured": false
+  },
+  {
+    "name": "SmartClass",
+    "description": "🌡 A web dashboard for monitoring and managing classroom embedded systems in real time.",
+    "image": "https://github.com/Mr-MRF-Dev/SmartClass-Embedded-System-Project/blob/master/images/homepage.png?raw=true",
+    "liveUrl": "",
+    "repoUrl": "https://github.com/Mr-MRF-Dev/SmartClass-Embedded-System-Project",
+    "language": "TypeScript",
+    "stars": 0,
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Bun"
+    ],
+    "size": "2x1",
+    "featured": true
+  },
+  {
+    "name": "Airline Data Warehouse",
+    "description": "✈ An integrated Data Warehouse (DWH) and Business Intelligence (BI) platform for the aviation industry, built for advanced data analysis and interactive reporting.",
+    "image": "",
+    "liveUrl": "",
+    "repoUrl": "https://github.com/Mr-MRF-Dev/Airline-Data-Warehouse",
+    "language": "TSQL",
+    "stars": 0,
+    "tags": [
+      "SQL Server",
+      "SSIS",
+      "SSAS",
+      "Power BI"
+    ],
     "size": "1x2",
     "featured": false
   },
   {
-    "name": "Angry Task",
-    "description": "A simple and modern Angular to-do app.",
-    "image": "",
-    "liveUrl": "https://mr-mrf-dev.github.io/Angry-Task/",
-    "repoUrl": "https://github.com/Mr-MRF-Dev/Angry-Task",
-    "language": "TypeScript",
-    "stars": 5,
-    "tags": ["Angular", "PrimeNG", "Tailwind CSS"],
-    "size": "1x1",
-    "featured": false
-  },
-  {
-    "name": "Simple Profile Card",
-    "description": "A single-page website template for showcasing your profile and links.",
-    "image": "",
-    "liveUrl": "https://mr-mrf-dev.github.io/Simple-Profile-Card/",
-    "repoUrl": "https://github.com/Mr-MRF-Dev/Simple-Profile-Card",
-    "language": "CSS",
-    "stars": 1,
-    "tags": ["HTML", "CSS", "JavaScript"],
-    "size": "1x1",
-    "featured": false
-  },
-  {
-    "name": "Chillify",
-    "description": "A simple music player database schema, designed as a team database project.",
+    "name": "NetLab Archive",
+    "description": "🌐 Network lab projects and exam resources built in Cisco Packet Tracer.",
     "image": "",
     "liveUrl": "",
-    "repoUrl": "https://github.com/Mr-MRF-Dev/Chillify-DataBase-Project",
-    "language": "TSQL",
-    "stars": 1,
-    "tags": ["SQL Server", "Database Design"],
+    "repoUrl": "https://github.com/Mr-MRF-Dev/NetLab-Archive",
+    "language": "",
+    "stars": 0,
+    "tags": [
+      "Cisco Packet Tracer",
+      "Networking"
+    ],
+    "size": "1x1",
+    "featured": false
+  },
+  {
+    "name": "My Portfolio Website",
+    "description": "My personal portfolio website to showcase my projects and skills.",
+    "image": "https://github.com/Mr-MRF-Dev/Mr-MRF-Dev.github.io/blob/master/assets/images/image.png?raw=true",
+    "liveUrl": "#",
+    "repoUrl": "https://github.com/Mr-MRF-Dev/Mr-MRF-Dev.github.io",
+    "language": "JavaScript",
+    "stars": 0,
+    "tags": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ],
+    "size": "2x1",
+    "featured": false
+  },
+  {
+    "name": "Angry Task",
+    "description": "💢 Simple and Modern Angular to-do app.",
+    "image": "https://github.com/Mr-MRF-Dev/Angry-Task/blob/master/images/screenshot.png?raw=true",
+    "liveUrl": "https://mr-mrf-dev.github.io/Angry-Task/",
+    "repoUrl": "https://github.com/Mr-MRF-Dev/Angry-Task",
+    "language": "Angular",
+    "stars": 0,
+    "tags": [
+      "TypeScript",
+      "Angular",
+      "PrimeNG",
+      "Tailwind CSS"
+    ],
+    "size": "2x1",
+    "featured": false
+  },
+  {
+    "name": "ChildrenOfHeaven Frontend",
+    "description": "Children of heaven website's project",
+    "image": "",
+    "liveUrl": "https://childrenofheaven.ir/",
+    "repoUrl": "https://github.com/ChildrenOfHeaven",
+    "language": "Next.js",
+    "stars": 0,
+    "tags": [
+      "TypeScript",
+      "Next.js"
+    ],
     "size": "1x1",
     "featured": false
   },
   {
     "name": "Py Screen Saver",
-    "description": "A simple screen saver application built with Python and Tkinter.",
-    "image": "",
+    "description": "🖥️ A simple Screen Saver App Made with Python.",
+    "image": "https://github.com/Mr-MRF-Dev/Py-Screen-Saver/blob/master/images/screenshot.jpg?raw=true",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Py-Screen-Saver",
     "language": "Python",
-    "stars": 2,
-    "tags": ["Python", "Tkinter"],
+    "stars": 0,
+    "tags": [
+      "Python",
+      "Tkinter"
+    ],
+    "size": "2x1",
+    "featured": false
+  },
+  {
+    "name": "platform",
+    "description": "The platform for management and distribution of ConnecMent tokens.",
+    "image": "",
+    "liveUrl": "",
+    "repoUrl": "https://github.com/ConnecMent/platform",
+    "language": "HTML",
+    "stars": 0,
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "size": "1x1",
+    "featured": false
+  },
+  {
+    "name": "Chillify - Database Project",
+    "description": "A simple music player database schema, designed as a team database project.",
+    "image": "https://github.com/Mr-MRF-Dev/Chillify-DataBase-Project/raw/master/diagram/diagram.png?raw=true",
+    "liveUrl": "",
+    "repoUrl": "https://github.com/Mr-MRF-Dev/Chillify-DataBase-Project",
+    "language": "TSQL",
+    "stars": 0,
+    "tags": [
+      "SQL",
+      "SQL Server",
+      "Database Design"
+    ],
     "size": "1x2",
     "featured": false
   },
@@ -126,33 +233,61 @@
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Doctors-Building",
     "language": "C",
-    "stars": 3,
-    "tags": ["C", "Terminal App"],
-    "size": "2x2",
+    "stars": 0,
+    "tags": [
+      "C",
+      "Terminal App"
+    ],
+    "size": "1x1",
     "featured": false
   },
   {
-    "name": "Mr. Minesweeper",
-    "description": "A terminal-based Minesweeper game written in C.",
+    "name": "Simple Profile Card",
+    "description": "📇 A single-page website template for showcasing your profile and links.",
+    "image": "https://github.com/Mr-MRF-Dev/Simple-Profile-Card/blob/master/assets/images/simple-profile-card.png?raw=true",
+    "liveUrl": "https://mr-mrf-dev.github.io/Simple-Profile-Card/",
+    "repoUrl": "https://github.com/Mr-MRF-Dev/Simple-Profile-Card",
+    "language": "CSS",
+    "stars": 0,
+    "tags": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "size": "2x1",
+    "featured": false
+  },
+  {
+    "name": "tbot",
+    "description": "An extensible trading bot - write your own plugins for planning trades, execute and manage them.",
     "image": "",
     "liveUrl": "",
-    "repoUrl": "https://github.com/Mr-MRF-Dev/Mr-Minesweeper",
-    "language": "C",
-    "stars": 3,
-    "tags": ["C", "Terminal Game"],
-    "size": "1x1",
+    "repoUrl": "https://github.com/ConnecMent/tbot",
+    "language": "TypeScript",
+    "stars": 0,
+    "tags": [
+      "TypeScript",
+      "pnpm",
+      "dydx",
+      "Trading Bot"
+    ],
+    "size": "2x1",
     "featured": false
   },
   {
     "name": "Pizza Finder",
     "description": "A data structures project using a KD-tree to find the nearest pizza place.",
-    "image": "",
+    "image": "https://github.com/Mr-MRF-Dev/Pizza-Finder/blob/master/images/screenshot.jpg?raw=true",
     "liveUrl": "",
     "repoUrl": "https://github.com/Mr-MRF-Dev/Pizza-Finder",
     "language": "C++",
-    "stars": 1,
-    "tags": ["C++", "KD-Tree", "Data Structures"],
-    "size": "1x1",
+    "stars": 0,
+    "tags": [
+      "C++",
+      "KD-Tree",
+      "Data Structures"
+    ],
+    "size": "2x1",
     "featured": false
   }
 ]
