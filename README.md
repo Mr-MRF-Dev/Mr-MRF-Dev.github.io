@@ -5,6 +5,8 @@
 [![pages-build-deployment](https://github.com/Mr-MRF-Dev/Mr-MRF-Dev.github.io/actions/workflows/pages/pages-build-deployment/badge.svg?branch=master)](https://github.com/Mr-MRF-Dev/Mr-MRF-Dev.github.io/actions/workflows/pages/pages-build-deployment)
 ![Website](https://img.shields.io/website?down_message=offline&label=site&up_message=online&url=http%3A%2F%2FMr-MRF-Dev.github.io)
 
+![hero](assets/images/image.png)
+
 A modern, responsive portfolio website showcasing my skills, projects, and development process as a Full Stack Developer. Built with vanilla HTML, CSS, and JavaScript, featuring live GitHub integration, a dark-first visual system, and a persistent dark/light theme toggle.
 
 🔗 **Live Site**: [mr-mrf-dev.github.io](https://mr-mrf-dev.github.io)
